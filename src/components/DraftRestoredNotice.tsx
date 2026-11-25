@@ -31,7 +31,7 @@ export default function DraftRestoredNotice({
         </span>
         <p className="leading-relaxed">
           <span className="font-semibold text-[#22384E]">
-            Isian Anda dipulihkan otomatis.
+            Isianmu dipulihkan otomatis.
           </span>{" "}
           Tersimpan {formatDraftTime(savedAt)}. File bukti perlu diunggah ulang.
         </p>

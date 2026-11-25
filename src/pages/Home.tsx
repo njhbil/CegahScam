@@ -133,7 +133,7 @@ export default function Home() {
       >
         <div className="flex flex-col gap-8 lg:gap-10">
           <h1 className="text-center text-[24px] font-bold text-[#446685] sm:text-[32px] lg:mb-12 lg:text-[40px]">
-            Ingin periksa atau Belajar dulu?
+            Ingin periksa atau belajar dulu?
           </h1>
           <div className="relative mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 md:min-h-[500px] md:block md:gap-6">
             <div className="pointer-events-none absolute left-1/2 top-[35px] hidden aspect-square w-[430px] -translate-x-1/2 rounded-full border border-[#ADCEFF]/60 bg-[#ADCEFF]/10 md:block">
@@ -339,11 +339,11 @@ export default function Home() {
                 </svg>
               </span>
               <p className="text-[15px] font-bold text-[#26384A] sm:text-base">
-                Privasi jadi prioritas
+                Datamu, kendalimu
               </p>
               <p className="text-[13px] leading-relaxed text-[#3F4E5E] sm:text-sm">
-                Tanpa akun dan tanpa riwayat. Data yang kamu masukkan otomatis
-                terhapus saat sesi berakhir.
+                Batasi pemrosesan atau hapus datamu kapan saja lewat pengaturan
+                profil.
               </p>
             </div>
           </div>

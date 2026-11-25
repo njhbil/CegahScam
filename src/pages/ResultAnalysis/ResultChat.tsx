@@ -137,7 +137,7 @@ export default function ResultChat() {
           confirmTitle="Tinggalkan hasil analisis?"
           confirmMessage={
             data
-              ? "Hasil analisis ini tidak disimpan di server dan akan hilang. Demi keamanan data, Anda perlu mengulang analisis dari awal. Simpan PDF terlebih dahulu bila ingin menyimpan detailnya."
+              ? "Hasil analisis ini tidak disimpan di server dan akan hilang. Demi keamanan data, kamu perlu mengulang analisis dari awal. Simpan PDF terlebih dahulu bila ingin menyimpan detailnya."
               : undefined
           }
           confirmAction="Ya, tinggalkan"

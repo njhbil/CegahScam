@@ -35,12 +35,12 @@ function ScrollToTop() {
 
 function App() {
   const pageLocation = useLocation();
-  const hideLayout = ["/login", "/register", "/profile", "/history"].includes(pageLocation.pathname);
+  const hideFooter = ["/login", "/register"].includes(pageLocation.pathname);
 
   return (
     <div className="relative flex min-h-screen flex-col bg-linear-to-br from-[#F5F7FA] to-[#C3CFE2]">
       <ScrollToTop />
-      {!hideLayout && <Navbar />}
+      <Navbar />
 
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -64,7 +64,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {!hideLayout && <Footer />}
+      {!hideFooter && <Footer />}
     </div>
   );
 }

@@ -37,8 +37,6 @@ export default function ConsentModal({
     }
   };
 
-  const [isAtBottom, setIsAtBottom] = useState(false);
-
   // Reset seluruh persetujuan ketika modal dibuka
   useEffect(() => {
     if (isOpen) {
@@ -76,16 +74,16 @@ export default function ConsentModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-3 md:p-5">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#183B56]/50 p-3 backdrop-blur-sm md:p-5">
       {/* Modal */}
-      <div className="w-full max-w-2xl max-h-[90vh] bg-white rounded-xl shadow-xl flex flex-col overflow-hidden">
+      <div className="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[28px] bg-white shadow-2xl sm:rounded-[36px]">
         {/* Header */}
-        <div className="flex items-center justify-between p-5">
+        <div className="flex items-start justify-between gap-4 px-6 pb-2 pt-6">
           <div>
-            <h2 className="text-xl font-semibold text-[#183B56]">
+            <h2 className="text-xl font-bold text-[#446685] sm:text-2xl">
               Persetujuan Pengguna
             </h2>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="mt-1 text-sm text-[#3F4E5E]">
               Silakan baca ketentuan CegahScam sebelum melanjutkan.
             </p>
           </div>
@@ -94,21 +92,21 @@ export default function ConsentModal({
             type="button"
             onClick={onClose}
             aria-label="Tutup persetujuan"
-            className="text-gray-500 hover:text-gray-800 text-2xl"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-2xl leading-none text-[#446685] transition hover:bg-[#EAF2FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a8e4]/40"
           >
             &times;
           </button>
         </div>
 
         {/* Navigation Section */}
-        <div className="flex gap-2 px-5 py-3">
+        <div className="mx-6 mt-3 flex gap-1.5 rounded-2xl bg-[#F5F7FA] p-1.5">
           <button
             type="button"
             onClick={() => setActiveSection("termsConditions")}
-            className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`flex-1 rounded-xl py-2 text-sm font-semibold transition-colors ${
               activeSection === "termsConditions"
-                ? "bg-[#183B56] text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-[#47a8e4] text-white shadow-md"
+                : "text-[#446685] hover:bg-white"
             }`}
           >
             Terms & Conditions
@@ -118,10 +116,10 @@ export default function ConsentModal({
           <button
             type="button"
             onClick={() => setActiveSection("privacyPolicy")}
-            className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`flex-1 rounded-xl py-2 text-sm font-semibold transition-colors ${
               activeSection === "privacyPolicy"
-                ? "bg-[#183B56] text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                ? "bg-[#47a8e4] text-white shadow-md"
+                : "text-[#446685] hover:bg-white"
             }`}
           >
             Privacy Policy
@@ -133,12 +131,12 @@ export default function ConsentModal({
         <div
           ref={documentRef}
           onScroll={handleScroll}
-          className="flex-1 min-h-0 overflow-y-auto p-5"
+          className="min-h-0 flex-1 overflow-y-auto px-6 py-5"
         >
           {activeSection === "termsConditions" && (
-            <section className="space-y-5 text-sm text-gray-700 leading-relaxed">
+            <section className="space-y-5 text-sm leading-relaxed text-[#3F4E5E]">
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   1. Ketentuan Umum
                 </h3>
                 <p>
@@ -151,7 +149,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   2. Ketentuan Informasi Pengguna
                 </h3>
                 <ul className="list-disc pl-5 space-y-2">
@@ -175,7 +173,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   3. Pengiriman dan Penggunaan Informasi
                 </h3>
                 <ul className="list-disc pl-5 space-y-2">
@@ -199,7 +197,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   4. Hak Pembatasan dan Penangguhan Layanan
                 </h3>
                 <p className="mb-2">
@@ -234,7 +232,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   5. Hak dan Kewajiban Terkait Data
                 </h3>
                 <ul className="list-disc pl-5 space-y-2">
@@ -266,7 +264,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   6. Tanggung Jawab dan Batasan Layanan
                 </h3>
                 <p>
@@ -281,7 +279,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   7. Perubahan Ketentuan
                 </h3>
                 <p>
@@ -293,7 +291,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   8. Kontak
                 </h3>
                 <p>
@@ -308,9 +306,9 @@ export default function ConsentModal({
           )}
 
           {activeSection === "privacyPolicy" && (
-            <section className="space-y-5 text-sm text-gray-700 leading-relaxed">
+            <section className="space-y-5 text-sm leading-relaxed text-[#3F4E5E]">
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   1. Pendahuluan
                 </h3>
                 <p>
@@ -324,7 +322,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   2. Jenis Data yang Dikumpulkan
                 </h3>
 
@@ -365,7 +363,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   3. Alur Pengelolaan Data Pribadi
                 </h3>
 
@@ -432,7 +430,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   4. Dasar Pemrosesan Data
                 </h3>
                 <p className="mb-2">
@@ -457,7 +455,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   5. Hak Pengguna atas Data Pribadi
                 </h3>
                 <p className="mb-2">
@@ -504,7 +502,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   6. Perlindungan dan Keamanan Data
                 </h3>
                 <p>
@@ -522,7 +520,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   7. Perubahan Kebijakan Privasi
                 </h3>
                 <p>
@@ -534,7 +532,7 @@ export default function ConsentModal({
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-[#183B56] mb-2">
+                <h3 className="mb-2 text-base font-bold text-[#446685]">
                   8. Kontak dan Permintaan Privasi
                 </h3>
                 <p>
@@ -551,20 +549,20 @@ export default function ConsentModal({
         </div>
 
         {/* Footer */}
-        <div className="p-5 space-y-4">
+        <div className="space-y-3.5 border-t border-[#B9C8DA]/50 px-6 py-5">
           {!(hasReadTerms && hasReadPrivacy) && (
-            <p className="text-xs text-gray-500 text-center">
+            <p className="text-center text-xs text-[#3F4E5E]">
               Silakan baca kedua dokumen hingga bagian akhir
             </p>
           )}
 
-          <label className="flex items-start gap-3 text-sm text-gray-700">
+          <label className="flex items-start gap-3 text-sm text-[#3F4E5E]">
             <input
               type="checkbox"
               checked={agreeTerms}
               onChange={(e) => setAgreeTerms(e.target.checked)}
               disabled={!hasReadTerms}
-              className="mt-1 accent-[#183B56] disabled:opacity-40"
+              className="mt-1 accent-[#47a8e4] disabled:opacity-40"
             />
 
             <span>
@@ -573,13 +571,13 @@ export default function ConsentModal({
             </span>
           </label>
 
-          <label className="flex items-start gap-3 text-sm text-gray-700">
+          <label className="flex items-start gap-3 text-sm text-[#3F4E5E]">
             <input
               type="checkbox"
               checked={agreePrivacy}
               onChange={(e) => setAgreePrivacy(e.target.checked)}
               disabled={!hasReadPrivacy}
-              className="mt-1 accent-[#183B56] disabled:opacity-40"
+              className="mt-1 accent-[#47a8e4] disabled:opacity-40"
             />
 
             <span>
@@ -592,9 +590,7 @@ export default function ConsentModal({
             type="button"
             onClick={onContinue}
             disabled={!agreeTerms || !agreePrivacy}
-            className="w-full rounded-lg bg-[#183B56] py-3 text-white font-medium
-      disabled:bg-gray-300 disabled:cursor-not-allowed
-      hover:enabled:bg-[#244D70] transition"
+            className="w-full rounded-2xl bg-[#47a8e4] py-3 font-semibold text-white shadow-lg transition duration-200 hover:enabled:-translate-y-0.5 hover:enabled:bg-[#85B6FF] disabled:cursor-not-allowed disabled:bg-[#B9C8DA] disabled:shadow-none"
           >
             Lanjutkan
           </button>

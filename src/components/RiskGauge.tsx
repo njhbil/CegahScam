@@ -147,7 +147,7 @@ export default function RiskGauge({
           {Math.round(progress)}
           <span className="text-[30px]">%</span>
         </p>
-        <p className="text-[15px] text-[#667085]">Skor Anda</p>
+        <p className="text-[15px] text-[#667085]">Skormu</p>
       </div>
     </div>
   );

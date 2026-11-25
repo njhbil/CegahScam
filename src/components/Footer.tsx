@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="mt-16 w-full bg-linear-to-r from-[#E5EAF3] to-[#C8D4E7] text-[#26384A] lg:mt-24">
       <div className="bg-[#66738A] px-4 py-2.5 text-center text-[11px] font-medium leading-relaxed text-white sm:text-[13px]">
-        INFORMASI : Isian formulir disimpan sementara di perangkat Anda dan
+        Info: isian formulir disimpan sementara di perangkatmu dan
         dihapus setelah laporan dikirim
       </div>
 

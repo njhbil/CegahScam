@@ -512,7 +512,7 @@ export default function EmergencyReportView({ kind }: EmergencyReportViewProps) 
             confirmTitle="Tinggalkan laporan ini?"
             confirmMessage={
               data
-                ? "Laporan ini tidak disimpan di server dan akan hilang. Demi keamanan data, Anda perlu mengisi ulang laporan dari awal. Unduh PDF terlebih dahulu bila ingin menyimpan hasilnya."
+                ? "Laporan ini tidak disimpan di server dan akan hilang. Demi keamanan data, kamu perlu mengisi ulang laporan dari awal. Unduh PDF terlebih dahulu bila ingin menyimpan hasilnya."
                 : undefined
             }
             confirmAction="Ya, tinggalkan"

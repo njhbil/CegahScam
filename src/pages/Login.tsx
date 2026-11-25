@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import wallpaper from "../assets/Login/login-wall.jpg";
-import arrowDesktop from "../assets/Icon/arrow.svg";
-import arrowMobile from "../assets/Icon/arrowMobile.svg";
+import AuthLayout from "../components/AuthLayout";
+import AuthField from "../components/AuthField";
+import {
+  AlertIcon,
+  ArrowRightIcon,
+  LockIcon,
+  UserIcon,
+} from "../components/AuthIcons";
 import google from "../assets/Icon/google.svg";
+import robot from "../assets/Home/heroicon.webp";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -14,128 +20,109 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    if (username === "admin@123" && password === "123") {
-      login(username);
-      navigate("/");
-    } else {
-      setError("Username atau password salah!");
+    const trimmedUsername = username.trim();
+
+    if (!trimmedUsername || !password) {
+      setError("Username dan kata sandi wajib diisi.");
+      return;
     }
+
+    if (trimmedUsername === "admin@123" && password === "123") {
+      login(trimmedUsername);
+      navigate("/");
+      return;
+    }
+
+    setError("Username atau password salah. Periksa kembali lalu coba lagi.");
   };
 
   return (
-    <main className="relative min-h-screen md:h-screen bg-[#446685] flex flex-col md:flex-row items-center gap-6 p-2 overflow-hidden">
-      {/* Arrow */}
-      <NavLink to="/" className="absolute top-5 left-5 z-50 md:top-7 md:left-7">
-        <picture>
-          <source media="(max-width: 767px)" srcSet={arrowMobile} />
-          <img
-            src={arrowDesktop}
-            alt="Kembali"
-            className="p-1 w-10 h-10 border max-[767px]:border-0 md:border-[#446685] rounded-full"
-          />
-        </picture>
-      </NavLink>
+    <AuthLayout
+      robot={robot}
+      robotAlt="Maskot CegahScam memberi jempol"
+      tagline="Lindungi dirimu dari penipuan"
+      description="Masuk supaya riwayat analisis dan laporanmu tersimpan rapi."
+    >
+      <h2 className="text-[23px] font-bold leading-snug text-[#446685] sm:text-[28px]">
+        Masuk ke akunmu
+      </h2>
 
-      {/* Bagian kiri / Background */}
-      <div className="absolute inset-0 z-0 md:relative md:w-1/2 md:h-full md:overflow-hidden md:rounded-lg">
-        <img
-          src={wallpaper}
-          alt="Wallpaper"
-          className="w-full h-full object-cover"
+      <p className="mt-1.5 text-sm text-[#3F4E5E]">
+        Belum punya akun?{" "}
+        <NavLink
+          to="/register"
+          className="font-semibold text-[#1E40AF] underline-offset-4 transition hover:underline"
+        >
+          Daftar sekarang
+        </NavLink>
+      </p>
+
+      <form onSubmit={handleLogin} noValidate className="mt-5 space-y-3.5">
+        <AuthField
+          label="Username atau email"
+          value={username}
+          onChange={(value) => {
+            setUsername(value);
+            if (error) setError("");
+          }}
+          icon={<UserIcon className="h-[18px] w-[18px]" />}
+          placeholder="Masukkan username atau email"
+          autoComplete="username"
         />
 
-        <div className="absolute inset-0 bg-black/60 md:hidden pointer-events-none"></div>
+        <AuthField
+          label="Kata sandi"
+          type="password"
+          value={password}
+          onChange={(value) => {
+            setPassword(value);
+            if (error) setError("");
+          }}
+          icon={<LockIcon className="h-[18px] w-[18px]" />}
+          placeholder="Masukkan kata sandi"
+          autoComplete="current-password"
+        />
+
+        {error && (
+          <div
+            role="alert"
+            className="flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 px-3.5 py-3 text-sm text-red-600"
+          >
+            <AlertIcon className="mt-0.5 h-4 w-4 shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
+
+        <button
+          type="submit"
+          className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-[#47a8e4] py-2.5 text-[15px] font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#85B6FF] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
+        >
+          Masuk
+          <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+        </button>
+      </form>
+
+      <div className="my-3.5 flex items-center gap-3">
+        <span className="h-px flex-1 bg-[#DCE6F2]" />
+        <span className="text-xs text-[#5E83A5]">atau</span>
+        <span className="h-px flex-1 bg-[#DCE6F2]" />
       </div>
 
-      {/* Bagian kanan */}
-      <div className="relative z-10 w-full md:w-1/2 md:h-full flex flex-col items-center justify-center gap-8 px-5 py-10 md:px-10 max-[767px]:mt-10">
-        {/* Heading */}
-        <div className="w-3/4 flex flex-col gap-3">
-          <h1 className="text-[#F5F7FA] font-medium text-5xl">
-            Masuk ke Akun Anda
-          </h1>
+      <button
+        type="button"
+        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-[#B9C8DA] bg-white py-2.5 text-[15px] font-semibold text-[#446685] transition duration-200 hover:bg-[#F5F7FA] hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/20"
+      >
+        <img src={google} alt="" className="h-5 w-5" />
+        Masuk dengan Google
+      </button>
 
-          <p className="text-[#F5F7FA]">
-            Belum punya akun?{" "}
-            <NavLink to="/register" className="text-[#3385FF] underline">
-              Daftar di sini
-            </NavLink>
-          </p>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleLogin} className="w-3/4 flex flex-col gap-5">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="username" className="text-[#F5F7FA]">
-              Username atau email
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Masukkan username atau email"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-                setError("");
-              }}
-              className="w-full bg-white px-3 py-3 rounded-md outline-none focus:ring-2 focus:ring-[#3385FF]"
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password" className="text-[#F5F7FA]">
-              Kata sandi
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Masukkan kata sandi"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setError("");
-              }}
-              className="w-full bg-white px-3 py-3 rounded-md outline-none focus:ring-2 focus:ring-[#3385FF]"
-            />
-          </div>
-
-          {error && <p className="text-red-300 text-sm">{error}</p>}
-
-          <button
-            type="submit"
-            className="w-full bg-[#1E40AF] text-[#F5F7FA] py-3 rounded-md font-medium hover:bg-[#1D4ED8] transition-colors duration-200"
-          >
-            Masuk
-          </button>
-        </form>
-
-        <div className="w-3/4 flex flex-col gap-7">
-          {/* Pemisah */}
-          <div className="flex items-center gap-3">
-            <div className="flex-1 border-t border-gray-400"></div>
-
-            <span className="text-gray-300 text-sm whitespace-nowrap">
-              Atau daftar dengan
-            </span>
-
-            <div className="flex-1 border-t border-gray-400"></div>
-          </div>
-
-          {/* Tombol Google */}
-          <button
-            type="button"
-            className="w-full flex items-center justify-center gap-3 text-[#F5F7FA] py-3 rounded-md font-medium border border-gray-300 hover:bg-gray-100 transition-colors duration-200 hover:text-[#446685]"
-          >
-            <img src={google} alt="Google" className="w-5 h-5" />
-            Masuk dengan Google
-          </button>
-        </div>
-      </div>
-    </main>
+      <p className="mt-3 text-center text-[11px] leading-relaxed text-[#5E83A5]">
+        Dengan masuk, kamu menyetujui Syarat &amp; Ketentuan serta Kebijakan
+        Privasi CegahScam.
+      </p>
+    </AuthLayout>
   );
 }
