@@ -22,6 +22,8 @@ import ResultAnalysisScreenshot from "./pages/ResultAnalysis/ResultScreenshot";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import History from "./pages/History";
+import Legal from "./pages/Legal";
+import RequireAuth from "./components/RequireAuth";
 
 function ScrollToTop() {
   const { key } = useLocation();
@@ -47,20 +49,24 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="/analysis" element={<Analysis />} />
-        <Route path="/analysis/chat" element={<Chat />} />
-        <Route path="/analysis/screenshot" element={<Screenshot />} />
-        <Route path="/analysis/resultchat" element={<ResultAnalysisChat />} />
-        <Route path="/analysis/resultphone" element={<ResultAnalysiPhone />} />
-        <Route path="/analysis/resultscreenshot" element={<ResultAnalysisScreenshot />} />
-        <Route path="/analysis/phone" element={<Phone />} />
         <Route path="/emergency" element={<Emergency />} />
-        <Route path="/emergency/data" element={<DataBreach />} />
-        <Route path="/emergency/financial" element={<Financial />} />
-        <Route path="/report/data" element={<EmergencyReportView kind="data" />} />
-        <Route path="/report/financial" element={<EmergencyReportView kind="financial" />} />
         <Route path="/education" element={<Education />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/syarat-ketentuan" element={<Legal doc="terms" />} />
+        <Route path="/kebijakan-privasi" element={<Legal doc="privacy" />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/analysis/chat" element={<Chat />} />
+          <Route path="/analysis/screenshot" element={<Screenshot />} />
+          <Route path="/analysis/resultchat" element={<ResultAnalysisChat />} />
+          <Route path="/analysis/resultphone" element={<ResultAnalysiPhone />} />
+          <Route path="/analysis/resultscreenshot" element={<ResultAnalysisScreenshot />} />
+          <Route path="/analysis/phone" element={<Phone />} />
+          <Route path="/emergency/data" element={<DataBreach />} />
+          <Route path="/emergency/financial" element={<Financial />} />
+          <Route path="/report/data" element={<EmergencyReportView kind="data" />} />
+          <Route path="/report/financial" element={<EmergencyReportView kind="financial" />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/history" element={<History />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
 

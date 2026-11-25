@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const links = [
@@ -11,6 +11,7 @@ const links = [
 
 function ProfileMenu({ compact = false }: { compact?: boolean }) {
   const { username, logout } = useAuth();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const name = username || "Pengguna";
@@ -121,6 +122,7 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
             type="button"
             role="menuitem"
             onClick={() => {
+              navigate("/");
               logout();
               setOpen(false);
             }}

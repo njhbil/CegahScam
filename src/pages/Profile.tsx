@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import { useAuth } from "../context/AuthContext";
 import AuthField from "../components/AuthField";
 import Robot from "../components/Robot";
@@ -41,32 +40,6 @@ export default function Profile() {
 
   const set = (key: keyof ProfileForm) => (value: string) =>
     setFormData((current) => ({ ...current, [key]: value }));
-
-  const [restrictProcessing, setRestrictProcessing] = useState(false);
-
-  const handleDeleteData = async () => {
-    const result = await Swal.fire({
-      title: "Hapus semua data?",
-      text: "Riwayat laporan dan analisismu akan dihapus dan tidak bisa dikembalikan.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Ya, hapus",
-      cancelButtonText: "Batal",
-      confirmButtonColor: "#DC2626",
-      cancelButtonColor: "#6B7280",
-      reverseButtons: true,
-    });
-
-    if (!result.isConfirmed) return;
-
-    // TODO: panggil endpoint penghapusan data di backend (dikerjakan terpisah).
-    await Swal.fire({
-      title: "Belum tersambung ke server",
-      text: "Tombol ini sudah siap, tinggal dihubungkan ke backend.",
-      icon: "info",
-      confirmButtonColor: "#47a8e4",
-    });
-  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -228,47 +201,24 @@ export default function Profile() {
               Privasi &amp; data
             </h2>
             <p className="mt-1.5 text-sm leading-relaxed text-[#3F4E5E]">
-              Kamu yang mengatur data pribadimu. Aturan lengkapnya ada di
-              Syarat &amp; Ketentuan serta Kebijakan Privasi.
+              Cara datamu dikumpulkan, dipakai, disimpan, dan dihapus sudah
+              kami atur terbuka. Kalau mau mengajukan akses, pembatasan, atau
+              penghapusan data, caranya ada di sana juga.
             </p>
 
-            <div className="mt-5 flex flex-col gap-3">
-              <label className="flex cursor-pointer items-start gap-3.5 rounded-2xl bg-white/70 p-4 transition hover:bg-white">
-                <input
-                  type="checkbox"
-                  checked={restrictProcessing}
-                  onChange={(event) => setRestrictProcessing(event.target.checked)}
-                  className="mt-1 h-4 w-4 shrink-0 accent-[#47a8e4]"
-                />
-                <span>
-                  <span className="block text-sm font-semibold text-[#183B56]">
-                    Batasi pemrosesan data saya
-                  </span>
-                  <span className="mt-0.5 block text-sm leading-relaxed text-[#3F4E5E]">
-                    Hak pembatasan: datamu hanya disimpan dan tidak diproses
-                    lebih lanjut.
-                  </span>
-                </span>
-              </label>
-
-              <div className="flex flex-col gap-3 rounded-2xl bg-white/70 p-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-sm font-semibold text-[#183B56]">
-                    Hapus semua data saya
-                  </p>
-                  <p className="mt-0.5 text-sm leading-relaxed text-[#3F4E5E]">
-                    Menghapus riwayat laporan dan analisis. Tidak bisa
-                    dibatalkan.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleDeleteData}
-                  className="shrink-0 rounded-2xl border border-red-200 bg-white px-5 py-2.5 text-sm font-semibold text-red-600 transition duration-200 hover:bg-red-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-200"
-                >
-                  Hapus data
-                </button>
-              </div>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/syarat-ketentuan"
+                className="flex-1 rounded-2xl bg-white/70 px-5 py-3.5 text-center text-sm font-semibold text-[#446685] transition duration-200 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
+              >
+                Syarat &amp; Ketentuan
+              </Link>
+              <Link
+                to="/kebijakan-privasi"
+                className="flex-1 rounded-2xl bg-white/70 px-5 py-3.5 text-center text-sm font-semibold text-[#446685] transition duration-200 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
+              >
+                Kebijakan Privasi
+              </Link>
             </div>
           </section>
         </div>

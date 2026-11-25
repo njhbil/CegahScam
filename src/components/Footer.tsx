@@ -55,7 +55,14 @@ export default function Footer() {
         <hr className="my-5 border-[#AAB5C5]" />
 
         <p className="text-center text-[10px] leading-relaxed text-[#343B48] sm:text-left sm:text-[12px]">
-          © 2026 CegahScam. Hak cipta dilindungi. • Kebijakan Privasi
+          © 2026 CegahScam. Hak cipta dilindungi. •{" "}
+          <Link to="/syarat-ketentuan" className="hover:text-[#1E40AF] hover:underline">
+            Syarat &amp; Ketentuan
+          </Link>{" "}
+          •{" "}
+          <Link to="/kebijakan-privasi" className="hover:text-[#1E40AF] hover:underline">
+            Kebijakan Privasi
+          </Link>
         </p>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ConsentModal from "../components/ConsentModal";
 import AuthLayout from "../components/AuthLayout";
 import AuthField from "../components/AuthField";
@@ -136,8 +136,16 @@ export default function Register() {
         Daftar dengan Google
       </button>
 
-      <p className="mt-3 text-center text-[11px] leading-relaxed text-[#5E83A5]">
-        Syarat &amp; Ketentuan akan ditampilkan sebelum akunmu dibuat.
+      <p className="mt-3 text-center text-[11px] leading-relaxed text-[#3F4E5E]">
+        Baca dulu{" "}
+        <Link to="/syarat-ketentuan" target="_blank" className="font-semibold text-[#1E40AF] hover:underline">
+          Syarat &amp; Ketentuan
+        </Link>{" "}
+        dan{" "}
+        <Link to="/kebijakan-privasi" target="_blank" className="font-semibold text-[#1E40AF] hover:underline">
+          Kebijakan Privasi
+        </Link>
+        . Kamu akan diminta menyetujuinya sebelum akun dibuat.
       </p>
 
       <ConsentModal

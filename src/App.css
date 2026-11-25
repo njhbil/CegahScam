@@ -1,6 +1,28 @@
 @import "tailwindcss";
 
 @layer components {
+  .cs-swal {
+    @apply rounded-[28px]! bg-white! px-6! pb-7! pt-8! shadow-2xl!;
+    font-family: inherit;
+  }
+  .cs-swal-title {
+    @apply text-[22px]! font-bold! leading-snug! text-[#446685]!;
+  }
+  .cs-swal-text {
+    @apply text-sm! leading-relaxed! text-[#3F4E5E]!;
+  }
+  .cs-swal-actions {
+    @apply mt-2! flex! w-full! flex-col-reverse gap-2.5! sm:flex-row-reverse;
+  }
+  .cs-swal-confirm {
+    @apply flex-1 cursor-pointer rounded-2xl bg-[#47a8e4] px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#85B6FF] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25;
+  }
+  .cs-swal-cancel {
+    @apply flex-1 cursor-pointer rounded-2xl border border-[#B9C8DA] bg-white px-6 py-2.5 text-sm font-semibold text-[#446685] transition duration-200 hover:bg-[#F5F7FA] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/20;
+  }
+}
+
+@layer components {
   .form-card {
     @apply mx-auto mt-6 flex w-[calc(100%_-_2rem)] max-w-[1160px] flex-col rounded-[26px] bg-white/55 px-5 py-6 shadow-xl sm:mt-8 sm:w-full sm:rounded-[40px] sm:px-8 sm:py-8 lg:rounded-[50px] lg:px-12;
   }
@@ -98,6 +120,16 @@
   }
 }
 
+@keyframes cs-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
 @keyframes cs-fade-up {
   from {
     opacity: 0;
@@ -136,6 +168,15 @@
 
   .animate-float-slow {
     animation: cs-float 9s ease-in-out infinite;
+  }
+
+  .circle-breathe {
+    animation: cs-breathe 7s ease-in-out infinite;
+  }
+
+  .circle-breathe-alt {
+    animation: cs-breathe 7s ease-in-out infinite;
+    animation-delay: -3.5s;
   }
 
   .animate-fade-up {

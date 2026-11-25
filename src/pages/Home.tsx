@@ -342,8 +342,8 @@ export default function Home() {
                 Datamu, kendalimu
               </p>
               <p className="text-[13px] leading-relaxed text-[#3F4E5E] sm:text-sm">
-                Batasi pemrosesan atau hapus datamu kapan saja lewat pengaturan
-                profil.
+                Data apa yang kami simpan, untuk apa, dan berapa lama, semuanya
+                dijelaskan terbuka di Kebijakan Privasi.
               </p>
             </div>
           </div>

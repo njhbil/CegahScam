@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AuthLayout from "../components/AuthLayout";
 import AuthField from "../components/AuthField";
@@ -14,6 +14,9 @@ import robot from "../assets/Home/heroicon.webp";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const routeState = location.state as { from?: string; needLogin?: boolean } | null;
+  const redirectTo = routeState?.from ?? "/";
   const { login } = useAuth();
 
   const [username, setUsername] = useState("");
@@ -32,7 +35,7 @@ export default function Login() {
 
     if (trimmedUsername === "admin@123" && password === "123") {
       login(trimmedUsername);
-      navigate("/");
+      navigate(redirectTo, { replace: true });
       return;
     }
 
@@ -59,6 +62,15 @@ export default function Login() {
           Daftar sekarang
         </NavLink>
       </p>
+
+      {routeState?.needLogin && (
+        <div
+          role="status"
+          className="mt-4 rounded-xl bg-[#EAF2FF] px-3.5 py-3 text-sm text-[#26384A]"
+        >
+          Masuk dulu untuk membuka halaman itu.
+        </div>
+      )}
 
       <form onSubmit={handleLogin} noValidate className="mt-5 space-y-3.5">
         <AuthField
@@ -119,9 +131,16 @@ export default function Login() {
         Masuk dengan Google
       </button>
 
-      <p className="mt-3 text-center text-[11px] leading-relaxed text-[#5E83A5]">
-        Dengan masuk, kamu menyetujui Syarat &amp; Ketentuan serta Kebijakan
-        Privasi CegahScam.
+      <p className="mt-3 text-center text-[11px] leading-relaxed text-[#3F4E5E]">
+        Dengan masuk, kamu menyetujui{" "}
+        <Link to="/syarat-ketentuan" target="_blank" className="font-semibold text-[#1E40AF] hover:underline">
+          Syarat &amp; Ketentuan
+        </Link>{" "}
+        serta{" "}
+        <Link to="/kebijakan-privasi" target="_blank" className="font-semibold text-[#1E40AF] hover:underline">
+          Kebijakan Privasi
+        </Link>
+        .
       </p>
     </AuthLayout>
   );

@@ -25,11 +25,11 @@ export default function AuthLayout({
             {/* Lingkaran kecil di belakang robot, motif yang sama dengan bagian "Ingin periksa" di Home */}
             <div
               aria-hidden="true"
-              className="absolute -inset-[2%] rounded-full border border-[#ADCEFF]/70 bg-[#ADCEFF]/15"
+              className="circle-breathe absolute -inset-[10%] rounded-full border border-[#ADCEFF]/70 bg-[#ADCEFF]/15"
             />
             <div
               aria-hidden="true"
-              className="absolute inset-[9%] rounded-full border border-[#ADCEFF]/60 bg-[#ADCEFF]/25"
+              className="circle-breathe-alt absolute inset-[2%] rounded-full border border-[#ADCEFF]/60 bg-[#ADCEFF]/25"
             />
             <Robot
               src={robot}
@@ -39,7 +39,7 @@ export default function AuthLayout({
               className="relative h-full w-auto max-w-full object-contain"
             />
           </div>
-          <h2 className="mt-5 text-balance text-[28px] font-bold leading-tight text-[#446685] xl:text-[32px]">
+          <h2 className="mt-10 text-balance text-[28px] font-bold leading-tight text-[#446685] xl:text-[32px]">
             {tagline}
           </h2>
           <p className="mt-2 max-w-[22rem] text-balance text-[15px] leading-relaxed text-[#3F4E5E]">
