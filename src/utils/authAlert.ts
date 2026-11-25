@@ -1,16 +1,26 @@
 import Swal from "sweetalert2";
+import robot from "../assets/Home/heroicon.webp";
 
 export const showLoginAlert = async (): Promise<boolean> => {
   const result = await Swal.fire({
-    title: "Login Diperlukan!",
-    text: "Silakan login terlebih dahulu untuk mengakses layanan ini.",
-    icon: "warning",
+    title: "Masuk dulu untuk lanjut",
+    text: "Fitur ini khusus pengguna yang sudah masuk, supaya riwayat laporan dan analisismu tersimpan rapi.",
+    imageUrl: robot,
+    imageWidth: 96,
+    imageAlt: "",
     showCancelButton: true,
-    confirmButtonText: "Login Sekarang",
-    cancelButtonText: "Batal",
-    confirmButtonColor: "#1A56DB",
-    cancelButtonColor: "#6B7280",
+    confirmButtonText: "Masuk",
+    cancelButtonText: "Nanti saja",
     reverseButtons: true,
+    buttonsStyling: false,
+    customClass: {
+      popup: "cs-swal",
+      title: "cs-swal-title",
+      htmlContainer: "cs-swal-text",
+      actions: "cs-swal-actions",
+      confirmButton: "cs-swal-confirm",
+      cancelButton: "cs-swal-cancel",
+    },
   });
 
   return result.isConfirmed;

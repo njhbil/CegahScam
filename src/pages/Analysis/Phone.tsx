@@ -32,7 +32,7 @@ export default function Phone() {
 
   const isDirty = Boolean(nomorTelp);
   const leaveWarning = isDirty
-    ? "Isian ini tidak akan tersimpan dan akan dihapus dari perangkat. Pastikan Anda sudah selesai sebelum meninggalkan halaman."
+    ? "Isian ini tidak akan tersimpan dan akan dihapus dari perangkat. Pastikan kamu sudah selesai sebelum meninggalkan halaman."
     : undefined;
 
   useEffect(() => {

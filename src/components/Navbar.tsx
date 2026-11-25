@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import profile from "../assets/Icon/profile.svg";
-import ArrowDwn from "../assets/Icon/arrowDwn.svg";
-import ArrowDwnMobile from "../assets/Icon/arrowDwn-mobile.svg";
 
 const links = [
   { to: "/", label: "Beranda" },
@@ -12,12 +9,137 @@ const links = [
   { to: "/education", label: "Edukasi" },
 ];
 
+function ProfileMenu({ compact = false }: { compact?: boolean }) {
+  const { username, logout } = useAuth();
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const name = username || "Pengguna";
+
+  useEffect(() => {
+    if (!open) return;
+
+    function onPointerDown(event: PointerEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  const itemClass =
+    "block w-full rounded-2xl px-3.5 py-2.5 text-left transition-colors hover:bg-[#446685]/8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#47a8e4]/40";
+
+  return (
+    <div ref={ref} className="relative justify-self-end">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className={`flex items-center gap-2 rounded-full text-sm font-semibold text-[#1E40AF] transition duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30 ${
+          compact
+            ? "bg-[#EAF2FF] px-3.5 py-1.5 hover:bg-[#DCE9FF]"
+            : "h-11 px-2 hover:text-[#183B56]"
+        }`}
+      >
+        <span className="max-w-[110px] truncate lg:max-w-[160px]">{name}</span>
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </button>
+
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 top-full z-50 mt-3 w-72 rounded-3xl bg-white p-2.5 shadow-[0_24px_48px_-20px_rgba(68,102,133,0.55)] ring-1 ring-[#446685]/10"
+        >
+          <div className="flex items-center gap-3 rounded-2xl bg-[#EAF2FF] px-3.5 py-3">
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#47a8e4] text-base font-bold uppercase text-white"
+            >
+              {name.charAt(0)}
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-bold text-[#183B56]">{name}</p>
+              <p className="text-xs text-[#3F4E5E]">Akun CegahScam</p>
+            </div>
+          </div>
+
+          <div className="mt-2 flex flex-col gap-0.5">
+            <NavLink
+              to="/profile"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className={itemClass}
+            >
+              <span className="block text-sm font-semibold text-[#183B56]">
+                Pengaturan profil
+              </span>
+              <span className="block text-xs text-[#3F4E5E]">
+                Data diri, akun, dan privasi
+              </span>
+            </NavLink>
+            <NavLink
+              to="/history"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className={itemClass}
+            >
+              <span className="block text-sm font-semibold text-[#183B56]">
+                Riwayat
+              </span>
+              <span className="block text-xs text-[#3F4E5E]">
+                Laporan dan analisis yang kamu buat
+              </span>
+            </NavLink>
+          </div>
+
+          <div className="mx-2 my-2 h-px bg-[#B9C8DA]/60" />
+
+          <button
+            type="button"
+            role="menuitem"
+            onClick={() => {
+              navigate("/");
+              logout();
+              setOpen(false);
+            }}
+            className="block w-full rounded-2xl px-3.5 py-2.5 text-left text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
+          >
+            Keluar
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [showDropProfile, setShowDropProfile] = useState(false);
-  const { IsLoggedIn, username, logout } = useAuth();
-  const [profileOpen, setProfileOpen] = useState(false);
+  const { IsLoggedIn } = useAuth();
 
   useEffect(() => {
     function onScroll() {
@@ -64,52 +186,7 @@ export default function Navbar() {
                   Masuk
                 </NavLink>
               ) : (
-                <div className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setProfileOpen((value) => !value)}
-                    className="flex items-center gap-2 rounded-3xl bg-[#1E40AF] px-4 py-2 text-sm font-semibold text-[#F5F7FA]"
-                  >
-                    <span>{username || "Pengguna"}</span>
-                    <img
-                      src={ArrowDwnMobile}
-                      alt=""
-                      className={`h-3 w-3 transition-transform ${
-                        profileOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {profileOpen && (
-                    <div className="absolute right-0 top-full z-50 mt-2 w-44 overflow-hidden rounded-b-xl bg-white shadow-lg">
-                      <NavLink
-                        to="/profile"
-                        onClick={() => setProfileOpen(false)}
-                        className="block px-4 py-3 text-sm text-[#0F172A] hover:bg-gray-100"
-                      >
-                        Pengaturan Profil
-                      </NavLink>
-                      <NavLink
-                        to="/history"
-                        onClick={() => setProfileOpen(false)}
-                        className="block px-4 py-3 text-sm text-[#0F172A] hover:bg-gray-100"
-                      >
-                        Riwayat
-                      </NavLink>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          logout();
-                          setProfileOpen(false);
-                        }}
-                        className="w-full px-4 py-3 text-left text-sm text-red-600 hover:bg-gray-100"
-                      >
-                        Keluar
-                      </button>
-                    </div>
-                  )}
-                </div>
+                <ProfileMenu compact />
               )}
               <button
                 type="button"
@@ -217,51 +294,14 @@ export default function Navbar() {
             // Kondisi belum login
             <NavLink
               to="/login"
-              className="flex flex-row gap-3 justify-self-end"
+              className="flex h-11 items-center justify-self-end rounded-full bg-white/80 px-6 text-sm font-semibold text-[#1E40AF] shadow-lg shadow-[#446685]/10 backdrop-blur-md transition duration-200 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
             >
-              <img src={profile} alt="Profile" className="w-5 h-auto" />
-              <p className="text-[#1E40AF] font-bold">Login</p>
+              Masuk
             </NavLink>
           ) : (
-            // Kondisi sudah login
-            <div className="flex flex-row items-center gap-3 justify-self-end">
-              <p className="text-[#1E40AF] font-bold">Hi, {username}!</p>|
-              <button onClick={() => setShowDropProfile(!showDropProfile)}>
-                <img
-                  src={ArrowDwn}
-                  className="w-5 h-auto hover:cursor-pointer"
-                />
-              </button>
-            </div>
+            <ProfileMenu />
           )}
         </div>
-        {showDropProfile && (
-          <div className="absolute bg-white w-1/5 h-auto right-15 top-17 rounded-b-lg">
-            <div className="flex flex-col p-5 text-end">
-              <NavLink
-                to="/profile"
-                className="hover:bg-[#1E40AF] hover:text-[#F5F7FA] p-2 hover:rounded-md"
-              >
-                Pengaturan Profil
-              </NavLink>
-              <NavLink
-                to="/history"
-                className="hover:bg-[#1E40AF] hover:text-[#F5F7FA] p-2 hover:rounded-md"
-              >
-                Riwayat
-              </NavLink>
-              <button
-                onClick={() => {
-                  logout();
-                  setShowDropProfile(false);
-                }}
-                className="text-end hover:bg-[#1E40AF] hover:text-[#F5F7FA] p-2 hover:rounded-md hover:cursor-pointer"
-              >
-                Keluar
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );
