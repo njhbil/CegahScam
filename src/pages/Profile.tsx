@@ -3,10 +3,9 @@ import type { FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AuthField from "../components/AuthField";
-import Robot from "../components/Robot";
+import Avatar from "../components/Avatar";
 import BackLink from "../components/BackLink";
 import { LockIcon, PhoneIcon, UserIcon } from "../components/AuthIcons";
-import robot from "../assets/Home/heroicon.webp";
 
 type ProfileForm = {
   username: string;
@@ -65,19 +64,13 @@ export default function Profile() {
         <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:items-start lg:gap-6">
           {/* Kartu akun */}
           <aside className="flex flex-col items-center rounded-[28px] bg-white/60 px-6 py-6 lg:py-8 text-center shadow-md sm:rounded-[44px] lg:row-span-2 lg:sticky lg:top-28">
-            <Robot
-              src={robot}
-              alt="Maskot CegahScam"
-              motion="float"
-              interactive
-              className="hidden w-36 object-contain lg:block"
-            />
-            <p className="max-w-full break-words lg:mt-4 text-lg font-bold text-[#446685]">
+            <span className="rounded-full bg-white p-[3px] shadow-lg shadow-[#446685]/15">
+              <Avatar className="h-24 w-24 lg:h-28 lg:w-28" />
+            </span>
+            <p className="mt-4 max-w-full break-words text-lg font-bold text-[#446685]">
               {username || "Pengguna"}
             </p>
-            <p className="mt-1 text-sm text-[#3F4E5E]">
-              Terakhir masuk 5 menit yang lalu
-            </p>
+            <p className="mt-1 text-sm text-[#3F4E5E]">Akun CegahScam</p>
 
             <div className="mt-6 flex w-full flex-col gap-2.5">
               <Link
@@ -211,17 +204,6 @@ export default function Profile() {
             </button>
           </form>
 
-          <section className="rounded-[28px] bg-white/60 px-5 py-7 shadow-md sm:rounded-[44px] sm:px-9 sm:py-9 lg:col-start-2">
-            <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
-              Privasi &amp; data
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-[#3F4E5E]">
-              Kamu sudah menyetujui Syarat &amp; Ketentuan serta Kebijakan
-              Privasi saat mendaftar. Data yang kamu isi dipakai untuk
-              analisis dan menyimpan riwayatmu, dan disimpan selama akunmu
-              aktif atau sampai kamu meminta penghapusan.
-            </p>
-          </section>
         </div>
       </div>
     </main>

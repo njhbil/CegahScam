@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { UserIcon } from "./AuthIcons";
+import Avatar from "./Avatar";
 
 const links = [
   { to: "/", label: "Beranda" },
@@ -9,6 +10,23 @@ const links = [
   { to: "/analysis", label: "Analisis" },
   { to: "/education", label: "Edukasi" },
 ];
+
+function MenuIcon({ path }: { path: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-[18px] w-[18px] shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d={path} />
+    </svg>
+  );
+}
 
 function ProfileMenu({ compact = false }: { compact?: boolean }) {
   const { username, logout } = useAuth();
@@ -49,43 +67,40 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
         aria-expanded={open}
         aria-label={`Menu akun ${name}`}
         title={name}
-        className={`flex shrink-0 items-center justify-center rounded-full font-bold uppercase text-white ring-2 ring-white shadow-md transition duration-200 hover:bg-[#1E40AF] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/40 ${
-          compact ? "h-9 w-9 text-sm" : "h-11 w-11 text-base"
-        } ${open ? "bg-[#1E40AF]" : "bg-[#47a8e4]"}`}
+        className={`group flex shrink-0 items-center justify-center rounded-full bg-white/80 shadow-lg shadow-[#446685]/10 backdrop-blur-md transition duration-200 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30 ${
+          compact ? "h-9 w-9 p-[2px]" : "h-11 w-11 p-[2px]"
+        } ${open ? "bg-white ring-1 ring-[#47a8e4]" : ""}`}
       >
-        <span aria-hidden="true">{name.charAt(0)}</span>
+        <Avatar className="h-full w-full transition-transform duration-200 group-hover:scale-[1.04]" />
       </button>
 
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-full z-50 mt-3 w-72 rounded-3xl bg-white p-2.5 shadow-[0_24px_48px_-20px_rgba(68,102,133,0.55)] ring-1 ring-[#446685]/10"
+          className="absolute right-0 top-full z-50 mt-3 w-72 origin-top-right animate-fade-in rounded-3xl bg-white p-2 shadow-[0_24px_48px_-20px_rgba(68,102,133,0.55)] ring-1 ring-[#446685]/10"
         >
-          <div className="flex items-center gap-3 rounded-2xl bg-[#EAF2FF] px-3.5 py-3">
-            <span
-              aria-hidden="true"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#47a8e4] text-base font-bold uppercase text-white"
-            >
-              {name.charAt(0)}
-            </span>
+          <div className="flex items-center gap-3 px-3 pb-3 pt-2.5">
+            <Avatar className="h-11 w-11" />
             <div className="min-w-0">
               <p className="truncate text-sm font-bold text-[#183B56]">{name}</p>
-              <p className="text-xs text-[#3F4E5E]">Akun CegahScam</p>
+              <p className="text-xs text-[#5E83A5]">Akun CegahScam</p>
             </div>
           </div>
 
-          <div className="mt-2 flex flex-col gap-0.5">
+          <div className="mx-2 h-px bg-[#B9C8DA]/50" />
+
+          <div className="mt-1.5 flex flex-col gap-0.5">
             <NavLink
               to="/profile"
               role="menuitem"
               onClick={() => setOpen(false)}
               className={itemClass}
             >
-              <span className="block text-sm font-semibold text-[#183B56]">
-                Pengaturan profil
-              </span>
-              <span className="block text-xs text-[#3F4E5E]">
-                Data diri, akun, dan privasi
+              <span className="flex items-center gap-3 text-[#446685]">
+                <MenuIcon path="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />
+                <span className="text-sm font-semibold text-[#183B56]">
+                  Profil saya
+                </span>
               </span>
             </NavLink>
             <NavLink
@@ -94,16 +109,16 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
               onClick={() => setOpen(false)}
               className={itemClass}
             >
-              <span className="block text-sm font-semibold text-[#183B56]">
-                Riwayat
-              </span>
-              <span className="block text-xs text-[#3F4E5E]">
-                Laporan dan analisis yang kamu buat
+              <span className="flex items-center gap-3 text-[#446685]">
+                <MenuIcon path="M3.5 12a8.5 8.5 0 1 0 2.5-6M3.5 4v4h4M12 7.5V12l3 2" />
+                <span className="text-sm font-semibold text-[#183B56]">
+                  Riwayat
+                </span>
               </span>
             </NavLink>
           </div>
 
-          <div className="mx-2 my-2 h-px bg-[#B9C8DA]/60" />
+          <div className="mx-2 my-1.5 h-px bg-[#B9C8DA]/50" />
 
           <button
             type="button"
@@ -113,8 +128,9 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
               logout();
               setOpen(false);
             }}
-            className="block w-full rounded-2xl px-3.5 py-2.5 text-left text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
+            className="flex w-full items-center gap-3 rounded-2xl px-3.5 py-2.5 text-left text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
           >
+            <MenuIcon path="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 16l-4-4 4-4M6 12h10" />
             Keluar
           </button>
         </div>
