@@ -593,7 +593,7 @@ export default function EmergencyReportView({ kind }: EmergencyReportViewProps) 
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#52789A]">
                 {copy.label}
               </p>
-              <h1 className="mt-1 text-[22px] font-bold leading-tight text-[#26384A] sm:text-[26px]">
+              <h1 className="mt-1 text-2xl font-bold leading-tight text-[#446685] sm:text-[28px]">
                 Laporan {copy.label} sudah siap
               </h1>
               <p className="mt-2 max-w-130 text-[13px] leading-relaxed text-[#5B6B7C] sm:text-[14px]">
@@ -640,7 +640,7 @@ export default function EmergencyReportView({ kind }: EmergencyReportViewProps) 
         <div className="grid gap-5 lg:grid-cols-2">
           <section className="flex flex-col rounded-4xl bg-white p-5 shadow-xl shadow-[#8FA9C4]/20 sm:p-7">
             <div className="flex items-center justify-between gap-3">
-              <h2 className="text-[18px] font-bold text-[#26384A] sm:text-[20px]">
+              <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
                 Template Pesan
               </h2>
               <button
@@ -657,7 +657,7 @@ export default function EmergencyReportView({ kind }: EmergencyReportViewProps) 
           </section>
 
           <section className="flex flex-col rounded-4xl bg-white p-5 shadow-xl shadow-[#8FA9C4]/20 sm:p-7">
-            <h2 className="text-[18px] font-bold text-[#26384A] sm:text-[20px]">
+            <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
               Kontak Rujukan
             </h2>
 
@@ -757,7 +757,7 @@ export default function EmergencyReportView({ kind }: EmergencyReportViewProps) 
         </div>
 
         <section className="rounded-4xl bg-white p-5 shadow-xl shadow-[#8FA9C4]/20 sm:p-7">
-          <h2 className="text-[18px] font-bold text-[#26384A] sm:text-[20px]">
+          <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
             Langkah Penanganan
           </h2>
 

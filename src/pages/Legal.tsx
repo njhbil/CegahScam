@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import LegalDocument from "../components/LegalDocument";
+import { useAuth } from "../context/AuthContext";
 import {
   LEGAL_STATUS,
   LEGAL_UPDATED,
@@ -46,6 +47,7 @@ const privacySummary = [
 
 export default function Legal({ doc }: LegalPageProps) {
   const current = docs[doc];
+  const { IsLoggedIn } = useAuth();
 
   return (
     <main className="flex w-full flex-1 justify-center px-4 pb-16 pt-24 sm:pt-28">
@@ -126,14 +128,16 @@ export default function Legal({ doc }: LegalPageProps) {
           </article>
         </div>
 
-        <div className="mt-8 flex justify-center">
-          <Link
-            to="/register"
-            className="rounded-2xl bg-[#47a8e4] px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#85B6FF] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
-          >
-            Lanjut daftar
-          </Link>
-        </div>
+        {!IsLoggedIn && (
+          <div className="mt-8 flex justify-center">
+            <Link
+              to="/register"
+              className="rounded-2xl bg-[#47a8e4] px-6 py-2.5 text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#85B6FF] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
+            >
+              Lanjut daftar
+            </Link>
+          </div>
+        )}
       </div>
     </main>
   );

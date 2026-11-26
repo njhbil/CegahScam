@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { UserIcon } from "./AuthIcons";
 
 const links = [
   { to: "/", label: "Beranda" },
@@ -46,27 +47,13 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
         onClick={() => setOpen((value) => !value)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className={`flex items-center gap-2 rounded-full text-sm font-semibold text-[#1E40AF] transition duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30 ${
-          compact
-            ? "bg-[#EAF2FF] px-3.5 py-1.5 hover:bg-[#DCE9FF]"
-            : "h-11 px-2 hover:text-[#183B56]"
-        }`}
+        aria-label={`Menu akun ${name}`}
+        title={name}
+        className={`flex shrink-0 items-center justify-center rounded-full font-bold uppercase text-white ring-2 ring-white shadow-md transition duration-200 hover:bg-[#1E40AF] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/40 ${
+          compact ? "h-9 w-9 text-sm" : "h-11 w-11 text-base"
+        } ${open ? "bg-[#1E40AF]" : "bg-[#47a8e4]"}`}
       >
-        <span className="max-w-[110px] truncate lg:max-w-[160px]">{name}</span>
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
-            open ? "rotate-180" : ""
-          }`}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
+        <span aria-hidden="true">{name.charAt(0)}</span>
       </button>
 
       {open && (
@@ -181,8 +168,9 @@ export default function Navbar() {
               {!IsLoggedIn ? (
                 <NavLink
                   to="/login"
-                  className="text-[#F5F7FA] bg-[#1E40AF] text-sm rounded-3xl py-1 px-4 font-semibold"
+                  className="flex items-center gap-1.5 rounded-3xl bg-[#1E40AF] px-4 py-1.5 text-sm font-semibold text-[#F5F7FA]"
                 >
+                  <UserIcon className="h-4 w-4" />
                   Masuk
                 </NavLink>
               ) : (
@@ -294,8 +282,9 @@ export default function Navbar() {
             // Kondisi belum login
             <NavLink
               to="/login"
-              className="flex h-11 items-center justify-self-end rounded-full bg-white/80 px-6 text-sm font-semibold text-[#1E40AF] shadow-lg shadow-[#446685]/10 backdrop-blur-md transition duration-200 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
+              className="flex h-11 items-center gap-2 justify-self-end rounded-full bg-white/80 px-6 text-sm font-semibold text-[#1E40AF] shadow-lg shadow-[#446685]/10 backdrop-blur-md transition duration-200 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
             >
+              <UserIcon className="h-[18px] w-[18px]" />
               Masuk
             </NavLink>
           ) : (

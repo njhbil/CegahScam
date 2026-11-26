@@ -7,7 +7,7 @@ type AuthFieldProps = {
   value: string;
   onChange: (value: string) => void;
   icon?: ReactNode;
-  type?: "text" | "email" | "password";
+  type?: "text" | "email" | "password" | "tel";
   name?: string;
   placeholder?: string;
   autoComplete?: string;

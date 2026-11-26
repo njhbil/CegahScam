@@ -222,7 +222,7 @@ export default function ResultScreenshot() {
               </span>
 
               <div className="flex flex-col gap-2">
-                <h2 className="text-[22px] font-bold leading-tight text-[#26384A]">
+                <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
                   {risk.label}
                 </h2>
                 <p className="max-w-130 text-[14px] leading-relaxed text-[#5B6B7C]">
@@ -238,7 +238,7 @@ export default function ResultScreenshot() {
           </section>
 
           <section className="flex-1 rounded-4xl bg-white p-5 shadow-xl shadow-[#8FA9C4]/20 sm:p-7">
-            <h2 className="text-[22px] font-bold leading-tight text-[#26384A]">
+            <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
               Kenapa Risikonya {levelName}?
             </h2>
 
@@ -256,7 +256,7 @@ export default function ResultScreenshot() {
             </ul>
           </section>
                     <section className="flex-1 rounded-4xl bg-white p-5 shadow-xl shadow-[#8FA9C4]/20 sm:p-7">
-            <h2 className="text-[22px] font-bold leading-tight text-[#26384A]">
+            <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
               Rekomendasi
             </h2>
 
@@ -279,7 +279,7 @@ export default function ResultScreenshot() {
       <section className="mt-7 rounded-4xl bg-white p-5 shadow-xl shadow-[#8FA9C4]/20 sm:p-7">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <h2 className="text-[20px] font-bold leading-tight text-[#26384A] sm:text-[22px]">
+            <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
               Apakah kamu sudah menjadi korban?
             </h2>
             <p className="mt-1 text-[14px] leading-relaxed text-[#5B6B7C]">

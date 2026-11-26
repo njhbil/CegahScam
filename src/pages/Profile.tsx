@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AuthField from "../components/AuthField";
 import Robot from "../components/Robot";
-import { LockIcon, UserIcon } from "../components/AuthIcons";
+import BackLink from "../components/BackLink";
+import { LockIcon, PhoneIcon, UserIcon } from "../components/AuthIcons";
 import robot from "../assets/Home/heroicon.webp";
 
 type ProfileForm = {
   username: string;
   nama: string;
+  telepon: string;
   pekerjaan: string;
   alamat: string;
   kodePos: string;
@@ -24,6 +26,7 @@ export default function Profile() {
   const initial: ProfileForm = {
     username: username ?? "",
     nama: "",
+    telepon: "",
     pekerjaan: "",
     alamat: "",
     kodePos: "",
@@ -48,7 +51,10 @@ export default function Profile() {
 
   return (
     <main className="flex w-full flex-1 justify-center px-4 pb-16 pt-24 sm:pt-28">
-      <div className="w-full max-w-[1160px]">
+      <div className="relative w-full max-w-[1160px]">
+        <div className="mb-4 sm:absolute sm:left-0 sm:top-0 sm:mb-0">
+          <BackLink to="/" label="Beranda" />
+        </div>
         <h1 className="text-center text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
           Profil Pengguna
         </h1>
@@ -109,7 +115,7 @@ export default function Profile() {
           {/* Form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <section className="rounded-[28px] bg-white/60 px-5 py-7 shadow-md sm:rounded-[44px] sm:px-9 sm:py-9">
-              <h2 className="text-xl font-bold text-[#446685] sm:text-2xl">
+              <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
                 Data diri
               </h2>
 
@@ -120,6 +126,15 @@ export default function Profile() {
                   onChange={set("nama")}
                   placeholder="Nama lengkapmu"
                   autoComplete="name"
+                />
+                <AuthField
+                  label="Nomor telepon"
+                  type="tel"
+                  value={formData.telepon}
+                  onChange={set("telepon")}
+                  icon={<PhoneIcon className="h-[18px] w-[18px]" />}
+                  placeholder="08xxxxxxxxxx"
+                  autoComplete="tel"
                 />
                 <AuthField
                   label="Pekerjaan"
@@ -162,7 +177,7 @@ export default function Profile() {
             </section>
 
             <section className="rounded-[28px] bg-white/60 px-5 py-7 shadow-md sm:rounded-[44px] sm:px-9 sm:py-9">
-              <h2 className="text-xl font-bold text-[#446685] sm:text-2xl">
+              <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
                 Informasi akun
               </h2>
 
@@ -197,29 +212,15 @@ export default function Profile() {
           </form>
 
           <section className="rounded-[28px] bg-white/60 px-5 py-7 shadow-md sm:rounded-[44px] sm:px-9 sm:py-9 lg:col-start-2">
-            <h2 className="text-xl font-bold text-[#446685] sm:text-2xl">
+            <h2 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
               Privasi &amp; data
             </h2>
             <p className="mt-1.5 text-sm leading-relaxed text-[#3F4E5E]">
-              Cara datamu dikumpulkan, dipakai, disimpan, dan dihapus sudah
-              kami atur terbuka. Kalau mau mengajukan akses, pembatasan, atau
-              penghapusan data, caranya ada di sana juga.
+              Kamu sudah menyetujui Syarat &amp; Ketentuan serta Kebijakan
+              Privasi saat mendaftar. Data yang kamu isi dipakai untuk
+              analisis dan menyimpan riwayatmu, dan disimpan selama akunmu
+              aktif atau sampai kamu meminta penghapusan.
             </p>
-
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <Link
-                to="/syarat-ketentuan"
-                className="flex-1 rounded-2xl bg-white/70 px-5 py-3.5 text-center text-sm font-semibold text-[#446685] transition duration-200 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
-              >
-                Syarat &amp; Ketentuan
-              </Link>
-              <Link
-                to="/kebijakan-privasi"
-                className="flex-1 rounded-2xl bg-white/70 px-5 py-3.5 text-center text-sm font-semibold text-[#446685] transition duration-200 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/25"
-              >
-                Kebijakan Privasi
-              </Link>
-            </div>
           </section>
         </div>
       </div>

@@ -204,7 +204,7 @@ type SectionHeadingProps = {
 function SectionHeading({ title, description }: SectionHeadingProps) {
   return (
     <div className="mb-8 lg:mb-10">
-      <h2 className="max-w-2xl text-balance text-[26px] font-bold leading-tight tracking-tight text-[#111827] sm:text-[32px] lg:text-[40px]">
+      <h2 className="max-w-2xl text-balance text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
         {title}
       </h2>
       <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-[#52789A] lg:text-[15px]">
@@ -233,7 +233,7 @@ export default function Education() {
           className="grid items-center gap-10 lg:min-h-[calc(100dvh_-_9rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-14 lg:gap-y-7"
         >
           <div className="order-1 lg:col-start-1 lg:row-start-1">
-            <h1 className="text-balance text-[30px] font-bold leading-[1.1] tracking-tight text-[#111827] sm:mt-5 sm:text-[36px] lg:text-[40px]">
+            <h1 className="text-balance sm:mt-5 text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
               Yuk kenali scam,
               <span className="block text-[#446685]">sebelum terjadi.</span>
             </h1>
@@ -310,7 +310,7 @@ export default function Education() {
             />
 
             <div className="text-center lg:text-left">
-              <h2 className="text-balance text-[26px] font-bold leading-tight tracking-tight text-[#111827] sm:text-[32px] lg:text-[36px]">
+              <h2 className="text-balance text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
                 Modus Scam Terkini
               </h2>
               <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-[#52789A] lg:text-[15px]">
@@ -326,7 +326,7 @@ export default function Education() {
                 key={item.title}
                 className="rounded-2xl border border-white/70 bg-white/65 p-5 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#A5C6FF] hover:bg-white hover:shadow-lg sm:p-6"
               >
-                <h3 className="text-[17px] font-bold leading-snug text-[#111827]">
+                <h3 className="text-[17px] font-bold leading-snug text-[#446685]">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-[13.5px] leading-relaxed text-[#3F4E5E]">
@@ -348,7 +348,7 @@ export default function Education() {
             />
 
             <div className="text-center lg:text-left">
-              <h2 className="text-balance text-[26px] font-bold leading-tight tracking-tight text-[#111827] sm:text-[32px] lg:text-[36px]">
+              <h2 className="text-balance text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
                 Pola Chat Scam yang Sering Terjadi
               </h2>
               <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-[#52789A] lg:text-[15px]">
@@ -394,7 +394,7 @@ export default function Education() {
               </div>
 
               <div className="flex flex-col rounded-2xl bg-white p-5 shadow-sm sm:p-6">
-                <h3 className="text-xl font-bold text-[#111827]">
+                <h3 className="text-xl font-bold text-[#446685]">
                   {chatExamples[activeChat].title}
                 </h3>
                 <p className="mt-2 max-w-xl text-[14px] leading-relaxed text-[#3F4E5E]">
@@ -478,7 +478,7 @@ export default function Education() {
                     key={item.term}
                     className="border-t border-[#446685]/12 py-4"
                   >
-                    <h3 className="text-[15px] font-bold text-[#111827]">
+                    <h3 className="text-[15px] font-bold text-[#446685]">
                       {item.term}
                     </h3>
                     <p className="mt-1 text-[13px] leading-relaxed text-[#3F4E5E]">

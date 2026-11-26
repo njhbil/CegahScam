@@ -69,7 +69,7 @@ export default function Home() {
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-center lg:gap-16">
           <div className="contents lg:flex lg:flex-col lg:items-start lg:gap-10">
             <div className="order-1 text-center lg:order-none lg:text-left">
-              <h1 className="text-[24px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
+              <h1 className="text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
                 Apakah kamu<br></br>terkena penipuan?
               </h1>
               <p className="mt-2 text-[14px] text-[#3F4E5E] sm:text-[15px]">
@@ -98,7 +98,7 @@ export default function Home() {
         className="reveal w-full max-w-6xl lg:min-h-120"
       >
         <div className="flex flex-col items-center justify-center gap-8 sm:gap-12">
-          <h1 className="text-center text-[24px] font-bold text-[#446685] sm:text-[32px] lg:text-[40px]">
+          <h1 className="text-center text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
             Langkah Pelaporan
           </h1>
           <div className="grid w-full gap-4 sm:grid-cols-3 sm:gap-6 lg:gap-10">
@@ -132,7 +132,7 @@ export default function Home() {
         className="reveal w-full max-w-6xl lg:min-h-120"
       >
         <div className="flex flex-col gap-8 lg:gap-10">
-          <h1 className="text-center text-[24px] font-bold text-[#446685] sm:text-[32px] lg:mb-12 lg:text-[40px]">
+          <h1 className="text-center text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px] lg:mb-12">
             Ingin periksa atau belajar dulu?
           </h1>
           <div className="relative mx-auto flex w-full max-w-[900px] flex-col items-center gap-8 md:min-h-[500px] md:block md:gap-6">
@@ -143,7 +143,7 @@ export default function Home() {
             </div>
 
             <div className="relative z-20 flex w-full max-w-[280px] flex-col gap-3 md:absolute md:left-0 md:top-0 md:w-60">
-              <div className="flex h-16 items-center justify-center rounded-[25px] bg-white text-[22px] font-bold text-[#5E83A5] shadow-sm sm:h-20 sm:text-[25px]">
+              <div className="flex h-16 items-center justify-center rounded-[25px] bg-[#446685] text-[22px] font-bold text-white shadow-sm sm:h-20 sm:text-[25px]">
                 PERIKSA
               </div>
 
@@ -173,7 +173,7 @@ export default function Home() {
             </div>
 
             <div className="relative z-20 flex w-full max-w-[280px] flex-col gap-3 md:absolute md:right-0 md:top-[210px] md:w-60">
-              <div className="flex h-16 items-center justify-center rounded-[25px] bg-white text-[22px] font-bold text-[#5E83A5] shadow-sm sm:h-20 sm:text-[25px]">
+              <div className="flex h-16 items-center justify-center rounded-[25px] bg-[#446685] text-[22px] font-bold text-white shadow-sm sm:h-20 sm:text-[25px]">
                 BELAJAR
               </div>
 
@@ -232,7 +232,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col items-center gap-3 lg:items-start">
-              <h1 className="text-[24px] font-bold text-[#446685] sm:text-[32px] lg:text-[40px]">
+              <h1 className="text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
                 Kenapa CegahScam?
               </h1>
               <p className="mx-auto max-w-xl text-[13px] leading-relaxed text-[#3F4E5E] sm:text-base lg:mx-0">
@@ -360,7 +360,7 @@ export default function Home() {
         className="reveal w-full max-w-6xl lg:min-h-120"
       >
         <div className="flex flex-col items-center justify-center gap-8 sm:gap-10">
-          <h1 className="text-center text-[24px] font-bold text-[#446685] sm:text-[32px] lg:text-[40px]">
+          <h1 className="text-center text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
             Pertanyaan yang sering diajukan
           </h1>
           <div className="flex w-full flex-col items-center justify-center gap-5 lg:flex-row lg:items-start">
@@ -376,7 +376,7 @@ export default function Home() {
                 <p className="pe-5 font-bold text-[#1A56DB]">
                   {openFAQ === "FAQ1" ? "-" : "+"}
                 </p>
-                <h1 className="text-[#1A56DB]">Apa itu CegahScam?</h1>
+                <span className="text-left font-semibold text-[#1A56DB]">Apa itu CegahScam?</span>
               </button>
               {openFAQ === "FAQ1" && (
                 <div className="w-full rounded-b-[15px] bg-white px-5 py-3 animate-fade-in">
@@ -396,9 +396,9 @@ export default function Home() {
                 <p className="pe-5 font-bold text-[#1A56DB]">
                   {openFAQ === "FAQ2" ? "-" : "+"}
                 </p>
-                <h1 className="text-[#1A56DB]">
+                <span className="text-left font-semibold text-[#1A56DB]">
                   Apakah CegahScam langsung melaporkan kasus saya?
-                </h1>
+                </span>
               </button>
               {openFAQ === "FAQ2" && (
                 <div className="w-full rounded-b-[15px] bg-white px-5 py-3 animate-fade-in">
@@ -421,9 +421,9 @@ export default function Home() {
                 <p className="pe-5 font-bold text-[#1A56DB]">
                   {openFAQ === "FAQ3" ? "-" : "+"}
                 </p>
-                <h1 className="text-[#1A56DB]">
+                <span className="text-left font-semibold text-[#1A56DB]">
                   CegahScam bisa digunakan untuk kasus apa saja?
-                </h1>
+                </span>
               </button>
               {openFAQ === "FAQ3" && (
                 <div className="w-full rounded-b-[15px] bg-white px-5 py-3 animate-fade-in">
@@ -443,9 +443,9 @@ export default function Home() {
                 <p className="pe-5 font-bold text-[#1A56DB]">
                   {openFAQ === "FAQ4" ? "-" : "+"}
                 </p>
-                <h1 className="text-[#1A56DB]">
+                <span className="text-left font-semibold text-[#1A56DB]">
                   Apa saja yang bisa dianalisis?
-                </h1>
+                </span>
               </button>
               {openFAQ === "FAQ4" && (
                 <div className="w-full rounded-b-[15px] bg-white px-5 py-3 animate-fade-in">
@@ -464,9 +464,9 @@ export default function Home() {
                 <p className="pe-5 font-bold text-[#1A56DB]">
                   {openFAQ === "FAQ5" ? "-" : "+"}
                 </p>
-                <h1 className="text-[#1A56DB]">
+                <span className="text-left font-semibold text-[#1A56DB]">
                   Kapan saya harus menggunakan Darurat?
-                </h1>
+                </span>
               </button>
               {openFAQ === "FAQ5" && (
                 <div className="w-full rounded-b-[15px] bg-white px-5 py-3 animate-fade-in">

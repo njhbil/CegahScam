@@ -53,7 +53,7 @@ export default function NotFound() {
             Error 404
           </p>
 
-          <h1 className="mt-2 text-[32px] font-bold leading-tight text-[#446685] sm:text-[40px]">
+          <h1 className="mt-2 text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
             Halaman tidak ditemukan
           </h1>
 

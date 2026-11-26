@@ -22,6 +22,7 @@ import ResultAnalysisScreenshot from "./pages/ResultAnalysis/ResultScreenshot";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import History from "./pages/History";
+import GuestOnly from "./components/GuestOnly";
 import Legal from "./pages/Legal";
 import RequireAuth from "./components/RequireAuth";
 
@@ -45,8 +46,10 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route element={<GuestOnly />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
         <Route path="/" element={<Home />} />
         <Route path="/analysis" element={<Analysis />} />
         <Route path="/emergency" element={<Emergency />} />

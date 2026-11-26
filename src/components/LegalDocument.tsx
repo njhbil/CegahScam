@@ -17,7 +17,7 @@ export default function LegalDocument({
             className={
               compact
                 ? "mb-2 text-base font-bold text-[#446685]"
-                : "mb-3 text-xl font-bold text-[#446685] sm:text-2xl"
+                : "mb-3 text-xl font-bold leading-tight text-[#446685] sm:text-2xl"
             }
           >
             {index + 1}. {section.title}

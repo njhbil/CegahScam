@@ -65,10 +65,10 @@ export default function Analysis() {
         className="reveal mt-4 flex w-full flex-col items-center rounded-[28px] bg-white/50 px-4 py-8 shadow-xl sm:mt-6 sm:rounded-[40px] sm:px-6 sm:py-10 lg:rounded-[50px] lg:px-10"
       >
         <div id="title" className="my-4 text-center sm:my-6">
-          <h1 className="text-xl font-bold text-black sm:text-2xl lg:text-[25px]">
+          <h1 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
             Apa yang sedang kamu alami?
           </h1>
-          <p className="mx-auto mt-2 max-w-2xl px-2 text-sm text-[#667085] sm:text-base">
+          <p className="mx-auto mt-2 max-w-2xl px-2 text-sm text-[#3F4E5E] sm:text-base">
             Pilih kondisi yang ingin kamu analisis sesuai dengan apa yang kamu
             alami.
           </p>

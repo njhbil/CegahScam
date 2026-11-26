@@ -53,7 +53,7 @@ export default function ConsentModal({
           <div>
             <h2
               id="consent-title"
-              className="text-xl font-bold text-[#446685] sm:text-2xl"
+              className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl"
             >
               Syarat &amp; Kebijakan Privasi
             </h2>

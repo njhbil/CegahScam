@@ -65,7 +65,7 @@ export default function Emergency() {
         className="reveal mx-auto mt-8 flex w-full max-w-6xl flex-col items-center rounded-[30px] bg-white/50 px-4 py-8 shadow-xl sm:px-6 lg:mt-10 lg:rounded-[50px]"
       >
         <div id="title" className="my-6 text-center sm:my-10">
-          <h1 className="text-[23px] font-bold text-black sm:text-[25px]">
+          <h1 className="text-xl font-bold leading-tight text-[#446685] sm:text-2xl">
             Apa yang sedang terjadi?
           </h1>
           <p className="mt-1 text-sm text-[#3F4E5E] sm:text-base">
