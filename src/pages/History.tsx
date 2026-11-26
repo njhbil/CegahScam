@@ -188,8 +188,30 @@ export default function History() {
           aria-labelledby={`tab-${current.key}`}
           className="mt-4 overflow-hidden rounded-[28px] bg-white/60 shadow-md sm:rounded-[36px]"
         >
-          <div className="overflow-x-auto">
-            <div role="table" aria-label={`Riwayat ${current.label}`} className="min-w-[760px]">
+          {rows.length > 0 && (
+            <ul aria-label={`Riwayat ${current.label}`} className="divide-y divide-[#B9C8DA]/50 md:hidden">
+              {rows.map((row) => (
+                <li key={row.id} className="flex flex-col gap-3 px-5 py-5 text-sm text-[#3F4E5E]">
+                  <div className="flex items-start justify-between gap-3">
+                    {row.cells[1]}
+                    <span className="shrink-0 text-xs text-[#5E83A5]">{row.cells[0]}</span>
+                  </div>
+                  {[2, 3].map((index) => (
+                    <div key={index} className="flex flex-col gap-1">
+                      <span className="text-xs font-semibold text-[#5E83A5]">
+                        {current.columns[index]}
+                      </span>
+                      <div>{row.cells[index]}</div>
+                    </div>
+                  ))}
+                  <div className="flex justify-end">{row.cells[4]}</div>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className="hidden md:block">
+            <div role="table" aria-label={`Riwayat ${current.label}`}>
               <div role="rowgroup">
                 <div
                   role="row"

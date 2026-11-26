@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AuthField from "../components/AuthField";
 import Avatar from "../components/Avatar";
+import { AVATARS } from "../lib/avatars";
 import BackLink from "../components/BackLink";
 import { LockIcon, PhoneIcon, UserIcon } from "../components/AuthIcons";
 
@@ -20,7 +21,8 @@ type ProfileForm = {
 };
 
 export default function Profile() {
-  const { username } = useAuth();
+  const { username, avatar, setAvatar } = useAuth();
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   const initial: ProfileForm = {
     username: username ?? "",
@@ -64,9 +66,66 @@ export default function Profile() {
         <div className="mt-8 grid gap-5 lg:mt-10 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:items-start lg:gap-6">
           {/* Kartu akun */}
           <aside className="flex flex-col items-center rounded-[28px] bg-white/60 px-6 py-6 lg:py-8 text-center shadow-md sm:rounded-[44px] lg:row-span-2 lg:sticky lg:top-28">
-            <span className="rounded-full bg-white p-[3px] shadow-lg shadow-[#446685]/15">
-              <Avatar className="h-24 w-24 lg:h-28 lg:w-28" />
-            </span>
+            <button
+              type="button"
+              onClick={() => setPickerOpen((value) => !value)}
+              aria-expanded={pickerOpen}
+              aria-controls="avatar-picker"
+              aria-label="Ganti foto profil"
+              className="group relative rounded-full bg-white p-[3px] shadow-lg shadow-[#446685]/15 transition duration-200 hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
+            >
+              <Avatar className="h-24 w-24 transition-transform duration-200 group-hover:scale-[1.03] lg:h-28 lg:w-28" />
+              <span className="absolute bottom-0.5 right-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-[#47a8e4] text-white shadow-md ring-2 ring-white">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-4-4L4 16v4Z" />
+                  <path d="m13.5 6.5 4 4" />
+                </svg>
+              </span>
+            </button>
+
+            {pickerOpen && (
+              <div
+                id="avatar-picker"
+                className="mt-4 w-full animate-fade-in rounded-2xl bg-white px-3 py-3.5 shadow-md"
+              >
+                <p className="text-sm font-bold text-[#446685]">Pilih robot kamu</p>
+                <div
+                  role="radiogroup"
+                  aria-label="Pilihan foto profil"
+                  className="mt-3 grid grid-cols-5 gap-1.5"
+                >
+                  {AVATARS.map((option) => {
+                    const selected = option.id === avatar;
+                    return (
+                      <button
+                        key={option.id}
+                        type="button"
+                        role="radio"
+                        aria-checked={selected}
+                        aria-label={option.label}
+                        title={option.label}
+                        onClick={() => setAvatar(option.id)}
+                        className={`rounded-full p-[3px] transition duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30 ${
+                          selected ? "ring-2 ring-[#47a8e4]" : "ring-1 ring-[#B9C8DA]/60"
+                        }`}
+                      >
+                        <Avatar variant={option.id} className="aspect-square w-full" />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             <p className="mt-4 max-w-full break-words text-lg font-bold text-[#446685]">
               {username || "Pengguna"}
             </p>

@@ -102,22 +102,22 @@ export default function Home() {
             Langkah Pelaporan
           </h1>
           <div className="grid w-full gap-4 sm:grid-cols-3 sm:gap-6 lg:gap-10">
-            <div className="flex w-full flex-col items-center gap-3 rounded-[25px] bg-[#446685] py-5 transition duration-200 hover:-translate-y-1 hover:shadow-xl">
-              <p className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg bg-white text-sm font-bold text-[#446685]">
+            <div className="flex w-full flex-col items-center gap-3 rounded-[25px] bg-[#47a8e4] py-5 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <p className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg bg-white text-sm font-bold text-[#2b86c4]">
                 1
               </p>
               <img src={cursor} alt="" className="h-10 w-10" />
               <p className="font-bold text-white">Pilih Kasus</p>
             </div>
-            <div className="flex w-full flex-col items-center gap-3 rounded-[25px] bg-[#446685] py-5 transition duration-200 hover:-translate-y-1 hover:shadow-xl">
-              <p className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg bg-white text-sm font-bold text-[#446685]">
+            <div className="flex w-full flex-col items-center gap-3 rounded-[25px] bg-[#47a8e4] py-5 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <p className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg bg-white text-sm font-bold text-[#2b86c4]">
                 2
               </p>
               <img src={handHeart} alt="" className="h-10 w-10" />
               <p className="font-bold text-white">Penanganan</p>
             </div>
-            <div className="flex w-full flex-col items-center gap-3 rounded-[25px] bg-[#446685] py-5 transition duration-200 hover:-translate-y-1 hover:shadow-xl">
-              <p className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg bg-white text-sm font-bold text-[#446685]">
+            <div className="flex w-full flex-col items-center gap-3 rounded-[25px] bg-[#47a8e4] py-5 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-xl">
+              <p className="mx-auto flex h-7 w-7 items-center justify-center rounded-lg bg-white text-sm font-bold text-[#2b86c4]">
                 3
               </p>
               <img src={files} alt="" className="h-10 w-10" />
@@ -347,11 +347,6 @@ export default function Home() {
               </p>
             </div>
           </div>
-
-          <p className="relative mt-6 rounded-2xl bg-[#446685] px-5 py-4 text-center text-[13px] font-semibold leading-relaxed text-white sm:text-sm">
-            Ujungnya bukan sekadar skor risiko, tapi draf laporan yang siap
-            disalin dan diteruskan ke bank, kepolisian, atau kanal resmi.
-          </p>
         </div>
       </div>
 

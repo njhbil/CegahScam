@@ -11,6 +11,15 @@ const links = [
   { to: "/education", label: "Edukasi" },
 ];
 
+const PROFILE_ICON = "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0";
+const HISTORY_ICON = "M3.5 12a8.5 8.5 0 1 0 2.5-6M3.5 4v4h4M12 7.5V12l3 2";
+const LOGOUT_ICON = "M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 16l-4-4 4-4M6 12h10";
+
+const accountLinks = [
+  { to: "/profile", label: "Profil saya", icon: PROFILE_ICON },
+  { to: "/history", label: "Riwayat", icon: HISTORY_ICON },
+];
+
 function MenuIcon({ path }: { path: string }) {
   return (
     <svg
@@ -28,7 +37,7 @@ function MenuIcon({ path }: { path: string }) {
   );
 }
 
-function ProfileMenu({ compact = false }: { compact?: boolean }) {
+function ProfileMenu() {
   const { username, logout } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -67,9 +76,9 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
         aria-expanded={open}
         aria-label={`Menu akun ${name}`}
         title={name}
-        className={`group flex shrink-0 items-center justify-center rounded-full bg-white/80 shadow-lg shadow-[#446685]/10 backdrop-blur-md transition duration-200 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30 ${
-          compact ? "h-9 w-9 p-[2px]" : "h-11 w-11 p-[2px]"
-        } ${open ? "bg-white ring-1 ring-[#47a8e4]" : ""}`}
+        className={`group flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/80 p-[2px] shadow-lg shadow-[#446685]/10 backdrop-blur-md transition duration-200 hover:bg-white hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30 ${
+          open ? "bg-white ring-1 ring-[#47a8e4]" : ""
+        }`}
       >
         <Avatar className="h-full w-full transition-transform duration-200 group-hover:scale-[1.04]" />
       </button>
@@ -97,7 +106,7 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
               className={itemClass}
             >
               <span className="flex items-center gap-3 text-[#446685]">
-                <MenuIcon path="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />
+                <MenuIcon path={PROFILE_ICON} />
                 <span className="text-sm font-semibold text-[#183B56]">
                   Profil saya
                 </span>
@@ -110,7 +119,7 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
               className={itemClass}
             >
               <span className="flex items-center gap-3 text-[#446685]">
-                <MenuIcon path="M3.5 12a8.5 8.5 0 1 0 2.5-6M3.5 4v4h4M12 7.5V12l3 2" />
+                <MenuIcon path={HISTORY_ICON} />
                 <span className="text-sm font-semibold text-[#183B56]">
                   Riwayat
                 </span>
@@ -130,7 +139,7 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
             }}
             className="flex w-full items-center gap-3 rounded-2xl px-3.5 py-2.5 text-left text-sm font-semibold text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
           >
-            <MenuIcon path="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 16l-4-4 4-4M6 12h10" />
+            <MenuIcon path={LOGOUT_ICON} />
             Keluar
           </button>
         </div>
@@ -142,7 +151,8 @@ function ProfileMenu({ compact = false }: { compact?: boolean }) {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { IsLoggedIn } = useAuth();
+  const { IsLoggedIn, username, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     function onScroll() {
@@ -181,16 +191,15 @@ export default function Navbar() {
               </span>
             </NavLink>
             <div className="flex flex-row items-center gap-2">
-              {!IsLoggedIn ? (
+              {!IsLoggedIn && (
                 <NavLink
                   to="/login"
-                  className="flex items-center gap-1.5 rounded-3xl bg-[#1E40AF] px-4 py-1.5 text-sm font-semibold text-[#F5F7FA]"
+                  onClick={() => setOpen(false)}
+                  className="flex h-9 items-center gap-1.5 rounded-full bg-white px-4 text-sm font-semibold text-[#1E40AF] shadow-md shadow-[#446685]/15 ring-1 ring-[#446685]/10 transition duration-200 hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
                 >
                   <UserIcon className="h-4 w-4" />
                   Masuk
                 </NavLink>
-              ) : (
-                <ProfileMenu compact />
               )}
               <button
                 type="button"
@@ -250,6 +259,52 @@ export default function Navbar() {
                   {link.label}
                 </NavLink>
               ))}
+
+              {IsLoggedIn && (
+                <>
+                  <div className="mx-2 my-2 h-px bg-[#B9C8DA]/50" />
+                  <div className="flex items-center gap-3 px-4 pb-2 pt-1">
+                    <Avatar className="h-10 w-10" />
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-bold text-[#183B56]">
+                        {username || "Pengguna"}
+                      </p>
+                      <p className="text-xs text-[#5E83A5]">Akun CegahScam</p>
+                    </div>
+                  </div>
+                  {accountLinks.map((link) => (
+                    <NavLink
+                      key={link.to}
+                      to={link.to}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        `flex items-center gap-3 rounded-xl px-4 py-3 text-[14px] transition-colors duration-200 ${
+                          isActive
+                            ? "bg-[#EAF2FF] font-bold text-[#1E40AF]"
+                            : "font-medium text-[#0F172A] hover:bg-[#446685]/5"
+                        }`
+                      }
+                    >
+                      <span className="text-[#446685]">
+                        <MenuIcon path={link.icon} />
+                      </span>
+                      {link.label}
+                    </NavLink>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpen(false);
+                      navigate("/");
+                      logout();
+                    }}
+                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-[14px] font-semibold text-red-600 transition-colors hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200"
+                  >
+                    <MenuIcon path={LOGOUT_ICON} />
+                    Keluar
+                  </button>
+                </>
+              )}
             </div>
           ) : null}
         </div>
