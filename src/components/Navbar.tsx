@@ -191,16 +191,6 @@ export default function Navbar() {
               </span>
             </NavLink>
             <div className="flex flex-row items-center gap-2">
-              {!IsLoggedIn && (
-                <NavLink
-                  to="/login"
-                  onClick={() => setOpen(false)}
-                  className="flex h-9 items-center gap-1.5 rounded-full bg-white px-4 text-sm font-semibold text-[#1E40AF] shadow-md shadow-[#446685]/15 ring-1 ring-[#446685]/10 transition duration-200 hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
-                >
-                  <UserIcon className="h-4 w-4" />
-                  Masuk
-                </NavLink>
-              )}
               <button
                 type="button"
                 aria-label={open ? "Tutup menu" : "Buka menu"}
@@ -259,6 +249,20 @@ export default function Navbar() {
                   {link.label}
                 </NavLink>
               ))}
+
+              {!IsLoggedIn && (
+                <>
+                  <div className="mx-2 my-2 h-px bg-[#B9C8DA]/50" />
+                  <NavLink
+                    to="/login"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-[#2b86c4] px-4 py-3 text-[14px] font-semibold text-white transition-colors duration-200 hover:bg-[#1f6fa8] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#47a8e4]/30"
+                  >
+                    <UserIcon className="h-4 w-4" />
+                    Masuk
+                  </NavLink>
+                </>
+              )}
 
               {IsLoggedIn && (
                 <>

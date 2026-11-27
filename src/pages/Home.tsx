@@ -143,7 +143,7 @@ export default function Home() {
             </div>
 
             <div className="relative z-20 flex w-full max-w-[280px] flex-col gap-3 md:absolute md:left-0 md:top-0 md:w-60">
-              <div className="flex h-16 items-center justify-center rounded-[25px] bg-[#446685] text-[22px] font-bold text-white shadow-sm sm:h-20 sm:text-[25px]">
+              <div className="flex h-16 items-center justify-center rounded-[25px] bg-[#2b86c4] text-[22px] font-bold text-white shadow-sm sm:h-20 sm:text-[25px]">
                 PERIKSA
               </div>
 
@@ -173,7 +173,7 @@ export default function Home() {
             </div>
 
             <div className="relative z-20 flex w-full max-w-[280px] flex-col gap-3 md:absolute md:right-0 md:top-[210px] md:w-60">
-              <div className="flex h-16 items-center justify-center rounded-[25px] bg-[#446685] text-[22px] font-bold text-white shadow-sm sm:h-20 sm:text-[25px]">
+              <div className="flex h-16 items-center justify-center rounded-[25px] bg-[#2b86c4] text-[22px] font-bold text-white shadow-sm sm:h-20 sm:text-[25px]">
                 BELAJAR
               </div>
 
