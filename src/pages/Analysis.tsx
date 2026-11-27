@@ -3,9 +3,34 @@ import { useAuth } from "../context/AuthContext";
 import { showLoginAlert } from "../utils/authAlert";
 
 import AnalysisHook from "../components/AnalysisHook";
-import Phone from "../assets/Analysis/phone.png";
-import Chat from "../assets/Analysis/chat.png";
-import Screenshot from "../assets/Analysis/screenshot.png";
+import Robot from "../components/Robot";
+import robotPhone from "../assets/Robots/robot-telepon.webp";
+import robotChat from "../assets/Robots/robot-chat.webp";
+import robotScreenshot from "../assets/Robots/robot-screenshot.webp";
+
+const options = [
+  {
+    path: "/analysis/phone",
+    robot: robotPhone,
+    alt: "Maskot CegahScam menerima telepon mencurigakan",
+    motion: "float",
+    text: "Periksa riwayat dan indikasi penipuan dari nomor telepon tidak dikenal",
+  },
+  {
+    path: "/analysis/chat",
+    robot: robotChat,
+    alt: "Maskot CegahScam menunjuk pesan chat",
+    motion: "sway",
+    text: "Periksa riwayat dan indikasi penipuan dari pesan chat yang mencurigakan",
+  },
+  {
+    path: "/analysis/screenshot",
+    robot: robotScreenshot,
+    alt: "Maskot CegahScam memegang tangkapan layar",
+    motion: "bob",
+    text: "Periksa riwayat dan indikasi penipuan dari tangkapan layar yang kamu kirim",
+  },
+] as const;
 
 export default function Analysis() {
   const { IsLoggedIn } = useAuth();
@@ -75,72 +100,32 @@ export default function Analysis() {
         </div>
 
         <div className="flex w-full flex-col items-center justify-center gap-12 lg:flex-row lg:items-stretch lg:gap-8 xl:gap-12">
-          <div className="relative flex w-full max-w-[320px] flex-1 flex-col items-center transition duration-300 hover:-translate-y-1">
-            <div className="relative z-10 -mb-8 flex h-16 w-16 items-center justify-center rounded-xl bg-[#a6d7f5] shadow-lg lg:-mb-10 lg:h-20 lg:w-20 lg:rounded-2xl">
-              <img
-                src={Phone}
-                alt="Ikon telepon"
-                className="h-8 w-8 object-contain brightness-0 invert lg:h-10 lg:w-10"
+          {options.map((option) => (
+            <div
+              key={option.path}
+              className="relative flex w-full max-w-[320px] flex-1 flex-col items-center pt-30 transition duration-300 hover:-translate-y-1 sm:pt-35"
+            >
+              <Robot
+                src={option.robot}
+                alt={option.alt}
+                motion={option.motion}
+                interactive
+                className="absolute top-0 z-10 h-45 w-45 object-contain sm:h-50 sm:w-50"
               />
-            </div>
 
-            <div className="relative flex w-full flex-1 flex-col items-center justify-between gap-6 rounded-[15px] bg-[#47a8e4] px-6 pb-6 pt-16 sm:px-8 lg:gap-8 lg:px-10 lg:pt-20">
-              <p className="text-center text-sm font-bold text-white sm:text-base">
-                Periksa riwayat dan indikasi penipuan dari nomor telepon tidak
-                dikenal
-              </p>
-              <button
-                onClick={() => handleAnalytic("/analysis/phone")}
-                className="whitespace-nowrap rounded-full bg-[#eff5fa] px-5 py-2 text-sm text-[#2e4a5c] transition hover:bg-[#5E83A5] hover:text-white sm:text-base"
-              >
-                Selanjutnya
-              </button>
+              <div className="relative flex w-full flex-1 flex-col items-center justify-between gap-6 rounded-[15px] bg-[#47a8e4] px-6 pb-6 pt-20 shadow-lg sm:px-8 lg:gap-8 lg:px-10">
+                <p className="text-center text-sm font-bold text-white sm:text-base">
+                  {option.text}
+                </p>
+                <button
+                  onClick={() => handleAnalytic(option.path)}
+                  className="whitespace-nowrap rounded-full bg-[#eff5fa] px-5 py-2 text-sm text-[#2e4a5c] transition hover:bg-[#5E83A5] hover:text-white sm:text-base"
+                >
+                  Selanjutnya
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="relative flex w-full max-w-[320px] flex-1 flex-col items-center transition duration-300 hover:-translate-y-1">
-            <div className="relative z-10 -mb-8 flex h-16 w-16 items-center justify-center rounded-xl bg-[#a6d7f5] shadow-lg lg:-mb-10 lg:h-20 lg:w-20 lg:rounded-2xl">
-              <img
-                src={Chat}
-                alt="Ikon chat"
-                className="h-8 w-8 object-contain brightness-0 invert lg:h-10 lg:w-10"
-              />
-            </div>
-
-            <div className="relative flex w-full flex-1 flex-col items-center justify-between gap-6 rounded-[15px] bg-[#47a8e4] px-6 pb-6 pt-16 sm:px-8 lg:gap-8 lg:px-10 lg:pt-20">
-              <p className="text-center text-sm font-bold text-white sm:text-base">
-                Periksa riwayat dan indikasi penipuan dari pesan chat yang
-                mencurigakan
-              </p>
-              <button
-                onClick={() => handleAnalytic("/analysis/chat")}
-                className="whitespace-nowrap rounded-full bg-[#eff5fa] px-5 py-2 text-sm text-[#2e4a5c] transition hover:bg-[#5E83A5] hover:text-white sm:text-base"
-              >
-                Selanjutnya
-              </button>
-            </div>
-          </div>
-          <div className="relative flex w-full max-w-[320px] flex-1 flex-col items-center transition duration-300 hover:-translate-y-1">
-            <div className="relative z-10 -mb-8 flex h-16 w-16 items-center justify-center rounded-xl bg-[#a6d7f5] shadow-lg lg:-mb-10 lg:h-20 lg:w-20 lg:rounded-2xl">
-              <img
-                src={Screenshot}
-                alt="Ikon tangkapan layar"
-                className="h-8 w-8 object-contain brightness-0 invert lg:h-10 lg:w-10"
-              />
-            </div>
-
-            <div className="relative flex w-full flex-1 flex-col items-center justify-between gap-6 rounded-[15px] bg-[#47a8e4] px-6 pb-6 pt-16 sm:px-8 lg:gap-8 lg:px-10 lg:pt-20">
-              <p className="text-center text-sm font-bold text-white sm:text-base">
-                Periksa riwayat dan indikasi penipuan dari tangkapan layar yang
-                kamu kirim
-              </p>
-              <button
-                onClick={() => handleAnalytic("/analysis/screenshot")}
-                className="whitespace-nowrap rounded-full bg-[#eff5fa] px-5 py-2 text-sm text-[#2e4a5c] transition hover:bg-[#5E83A5] hover:text-white sm:text-base"
-              >
-                Selanjutnya
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
