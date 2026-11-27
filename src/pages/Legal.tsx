@@ -33,7 +33,7 @@ const docs = {
 const privacySummary = [
   {
     label: "Data apa",
-    text: "Akun, isian dan bukti yang kamu kirim, serta data teknis.",
+    text: "Data akun, riwayat hasil analisis dan laporan, serta data teknis.",
   },
   {
     label: "Untuk apa",
@@ -41,7 +41,7 @@ const privacySummary = [
   },
   {
     label: "Berapa lama",
-    text: "Selama akunmu aktif, atau sampai kamu meminta penghapusan.",
+    text: "Akun dan riwayat selama akunmu aktif. Gambar dan file bukti langsung dihapus setelah dianalisis.",
   },
 ];
 

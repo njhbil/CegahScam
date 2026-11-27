@@ -138,7 +138,7 @@ export default function ResultScreenshot() {
           confirmTitle="Tinggalkan hasil analisis?"
           confirmMessage={
             data
-              ? "Hasil analisis ini tidak disimpan di server dan akan hilang. Demi keamanan data, kamu perlu mengulang analisis dari awal. Simpan PDF terlebih dahulu bila ingin menyimpan detailnya."
+              ? "Hasil analisis ini tetap bisa kamu buka lagi di halaman Riwayat. Gambar bukti tidak ikut disimpan, jadi pastikan file aslinya tetap ada di perangkatmu."
               : undefined
           }
           confirmAction="Ya, tinggalkan"

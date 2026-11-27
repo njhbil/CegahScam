@@ -342,8 +342,9 @@ export default function Home() {
                 Datamu, kendalimu
               </p>
               <p className="text-[13px] leading-relaxed text-[#3F4E5E] sm:text-sm">
-                Data apa yang kami simpan, untuk apa, dan berapa lama, semuanya
-                dijelaskan terbuka di Kebijakan Privasi.
+                Gambar dan bukti yang kamu kirim langsung dihapus setelah
+                dianalisis. Selebihnya kami jelaskan terbuka di Kebijakan
+                Privasi.
               </p>
             </div>
           </div>

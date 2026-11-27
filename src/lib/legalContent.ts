@@ -187,7 +187,7 @@ export const privacySections: LegalSection[] = [
         type: "ul",
         items: [
           "Nomor telepon, tautan, atau isi pesan yang kamu periksa.",
-          "Tangkapan layar atau bukti lain yang kamu unggah.",
+          "Tangkapan layar atau bukti lain yang kamu unggah. Berkas ini hanya diproses sesaat dan tidak pernah kami simpan.",
           "Isian laporan darurat dan kronologi kejadian.",
         ],
       },
@@ -230,7 +230,7 @@ export const privacySections: LegalSection[] = [
         items: [
           "Masuk: saat kamu mendaftar, mengubah profil, atau mengirim sesuatu lewat layanan.",
           "Diolah: yang kamu kirim dianalisis untuk menghasilkan skor risiko dan langkah penanganan. Sebagian pengolahan memakai layanan pihak ketiga, seperti penyedia AI dan layanan pengecekan nomor.",
-          "Disimpan: akun, riwayat, dan berkas yang kamu unggah disimpan di basis data dan penyimpanan CegahScam, dengan akses yang dibatasi.",
+          "Disimpan: data akun serta riwayat hasil analisis dan laporan disimpan di basis data CegahScam, dengan akses yang dibatasi. Gambar dan file bukti tidak ikut disimpan.",
           "Dibagikan: hanya seperlunya ke penyedia infrastruktur dan layanan pendukung, atau kalau hukum mewajibkan.",
           "Dihapus: mengikuti aturan lama penyimpanan di bagian berikutnya.",
         ],
@@ -246,15 +246,20 @@ export const privacySections: LegalSection[] = [
         items: [
           "Data akun: selama akunmu aktif.",
           "Riwayat analisis dan laporan: selama akunmu aktif, atau sampai kamu minta dihapus.",
-          "Gambar dan dokumen yang kamu unggah: mengikuti riwayatnya, dengan batas ukuran dan kuota sesuai paketmu.",
+          "Gambar dan file bukti yang kamu unggah: tidak disimpan. Berkas hanya ada di memori selama analisis berjalan, lalu langsung dibuang.",
+          "Hasil cek nomor telepon: disimpan sementara di memori server paling lama 24 jam, supaya pengecekan ulang nomor yang sama lebih cepat. Setelah itu terhapus otomatis.",
+          "Draf isian formulir: tersimpan di perangkatmu saja, tidak di server, dan dihapus setelah laporan dikirim.",
           "Setelah akun dihapus: datamu kami hapus dalam [jumlah hari ditentukan tim], kecuali data yang wajib kami simpan menurut hukum.",
-          "Draf isian formulir: cuma tersimpan sementara di perangkatmu dan dihapus setelah laporan dikirim.",
         ],
       },
-      { type: "h", text: "Penyedia AI dan zero data retention" },
+      { type: "h", text: "Zero data retention" },
       {
         type: "p",
-        text: "Untuk bagian yang diolah penyedia AI, kami menerapkan prinsip zero data retention: isi yang kamu kirim untuk dianalisis tidak disimpan oleh penyedia setelah hasilnya dikembalikan. [Dikonfirmasi tim sesuai kontrak dan pengaturan penyedia yang dipakai.]",
+        text: "Gambar dan file bukti yang kamu kirim tidak pernah ditulis ke basis data atau penyimpanan berkas kami. Berkas diproses di memori, dianalisis, lalu langsung dibuang begitu hasilnya keluar.",
+      },
+      {
+        type: "p",
+        text: "Prinsip yang sama berlaku untuk penyedia AI yang kami pakai: isi yang dikirim untuk dianalisis tidak disimpan oleh penyedia setelah hasilnya dikembalikan. [Dikonfirmasi tim sesuai kontrak dan pengaturan penyedia yang dipakai.]",
       },
     ],
   },
