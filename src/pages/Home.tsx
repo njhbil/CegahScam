@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import body1 from "../assets/Home/body-1.webp";
-import body2 from "../assets/Home/body-2.webp";
-import heroIcon from "../assets/Home/heroicon.webp";
+import body1 from "../assets/Robots/robot-toa.webp";
+import body2 from "../assets/Robots/robot-kedip.webp";
+import heroIcon from "../assets/Robots/robot-jempol.webp";
 import whyRobot from "../assets/Robots/robot-perisai.webp";
 import cursor from "../assets/Icon/Cursor.svg";
 import files from "../assets/Icon/Files.svg";

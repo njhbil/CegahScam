@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import BackLink from "../../components/BackLink";
 import EmergencyHook from "../../components/EmergencyHook";
 import Robot from "../../components/Robot";
-import robotChat from "../../assets/Emergency/robot1.webp";
-import robotMagnifier from "../../assets/Emergency/robot2.webp";
+import robotChat from "../../assets/Robots/robot-hp.webp";
+import robotMagnifier from "../../assets/Robots/robot-detektif.webp";
 import {
   buildDetailsHtml,
   buildParagraphHtml,

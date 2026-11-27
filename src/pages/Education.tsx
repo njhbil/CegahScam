@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import pict1 from "../assets/Education/pict1-edu.webp";
-import pict2 from "../assets/Education/pict2-edu.webp";
-import pict3 from "../assets/Education/pict3-edu.webp";
 import foto1 from "../assets/Education/carousel/carousel1.webp";
 import foto2 from "../assets/Education/carousel/carousel2.webp";
 import foto3 from "../assets/Education/carousel/carousel3.webp";
 import foto4 from "../assets/Education/carousel/carousel4.webp";
-import eduRobot from "../assets/Robots/robot-baca.webp";
-import robotModus from "../assets/Emergency/robot2.webp";
-import robotChat from "../assets/Emergency/robot1.webp";
+import heroRobot from "../assets/Robots/robot-baca.webp";
+import eduRobot from "../assets/Robots/robot-senang.webp";
+import robotModus from "../assets/Robots/robot-detektif.webp";
+import robotChat from "../assets/Robots/robot-hp.webp";
 import Robot from "../components/Robot";
 
 const modus = [
@@ -226,76 +224,66 @@ export default function Education() {
     : glossary.slice(0, 6);
 
   return (
-    <div className="w-full pb-20 pt-24 lg:pt-36">
+    <div className="w-full pb-20 pt-24 lg:pt-28">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <section
           id="hero-section"
-          className="grid items-center gap-10 lg:min-h-[calc(100dvh_-_9rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-14 lg:gap-y-7"
+          className="flex items-center justify-center lg:min-h-[calc(100dvh_-_12rem)]"
         >
-          <div className="order-1 lg:col-start-1 lg:row-start-1">
-            <h1 className="text-balance sm:mt-5 text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
-              Yuk kenali scam,
-              <span className="block text-[#446685]">sebelum terjadi.</span>
-            </h1>
-
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[#3F4E5E]">
-              Pelajari cara penipuan bekerja, tanda-tanda yang perlu
-              diperhatikan, dan langkah sederhana untuk melindungi diri.
-            </p>
-          </div>
-
-          <div className="relative order-2 mx-auto w-full max-w-[460px] lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            <div className="absolute -inset-5 -z-10 rounded-[2.5rem] bg-[#A5C6FF]/25 blur-2xl" />
-
-            <div className="grid grid-cols-5 grid-rows-2 gap-3">
-              <figure className="relative col-span-3 row-span-2 overflow-hidden rounded-2xl border border-white/70 shadow-lg">
-                <img
-                  src={pict1}
-                  alt="Panggilan masuk dari nomor tak dikenal di ponsel"
-                  className="h-full w-full object-cover"
-                />
-                <figcaption className="absolute bottom-3 left-3 rounded-full bg-[#111827]/70 px-2.5 py-1 text-[10px] font-medium text-white backdrop-blur-sm">
-                  Panggilan tak dikenal
-                </figcaption>
-              </figure>
-
-              <figure className="relative col-span-2 aspect-square overflow-hidden rounded-2xl border border-white/70 shadow-lg">
-                <img
-                  src={pict3}
-                  alt="Pesan peringatan palsu yang masuk ke ponsel"
-                  className="h-full w-full object-cover"
-                />
-                <figcaption className="absolute bottom-2 left-2 rounded-full bg-[#111827]/70 px-2 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
-                  Peringatan palsu
-                </figcaption>
-              </figure>
-
-              <figure className="relative col-span-2 aspect-square overflow-hidden rounded-2xl border border-white/70 shadow-lg">
-                <img
-                  src={pict2}
-                  alt="Ilustrasi pelaku membawa data pribadi korban"
-                  className="h-full w-full object-cover"
-                />
-                <figcaption className="absolute bottom-2 left-2 rounded-full bg-[#111827]/70 px-2 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm">
-                  Data dicuri
-                </figcaption>
-              </figure>
+          <div className="grid w-full gap-6 rounded-[32px] bg-white/50 px-5 py-8 shadow-md sm:gap-8 sm:rounded-[44px] sm:px-8 lg:min-h-[420px] lg:grid-cols-[1fr_auto] lg:content-center lg:items-center lg:gap-x-6 lg:gap-y-10 lg:py-3 lg:ps-16 lg:pr-12 xl:ps-24">
+            <div className="order-1 text-center lg:col-start-1 lg:row-start-1 lg:text-left">
+              <h1 className="text-balance text-[26px] font-bold leading-tight text-[#446685] sm:text-[32px] lg:text-[40px]">
+                Yuk kenali scam,
+                <span className="block">sebelum terjadi.</span>
+              </h1>
+              <p className="mx-auto mt-3 max-w-xl text-[13px] leading-relaxed text-[#3F4E5E] sm:text-[14px] lg:mx-0 lg:text-[15px]">
+                Pelajari cara penipuan bekerja, tanda-tanda yang perlu
+                diperhatikan, dan langkah sederhana untuk melindungi diri.
+              </p>
             </div>
-          </div>
 
-          <div className="order-3 flex flex-col gap-3 sm:flex-row lg:col-start-1 lg:row-start-2">
-            <a
-              href="#modus"
-              className="rounded-full bg-[#47a8e4] px-6 py-3 text-center text-sm font-semibold text-white shadow-lg transition hover:bg-[#3b93cc]"
-            >
-              Mulai dari modus terkini
-            </a>
-            <Link
-              to="/analysis"
-              className="rounded-full border border-[#47a8e4]/60 bg-white px-6 py-3 text-center text-sm font-semibold text-[#2E86B7] transition hover:border-[#47a8e4] hover:bg-[#EAF6FD]"
-            >
-              Periksa pesan mencurigakan
-            </Link>
+            <div className="relative order-2 mx-auto w-fit lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:justify-self-end">
+              <div
+                aria-hidden
+                className="absolute inset-x-6 bottom-4 top-10 -z-10 rounded-full bg-[#ADCEFF]/40 blur-2xl"
+              />
+              <Robot
+                src={heroRobot}
+                alt="Maskot CegahScam sedang membaca buku"
+                motion="float"
+                interactive
+                className="w-48 object-contain sm:w-56 lg:h-[clamp(280px,50vh,440px)] lg:w-auto"
+              />
+              <ul
+                aria-label="Contoh modus yang dibahas"
+                className="pointer-events-none hidden text-[11px] min-[420px]:block font-semibold text-[#446685] sm:text-[12px]"
+              >
+                <li className="absolute -left-10 top-[12%] rounded-full bg-white px-3 py-1.5 shadow-md shadow-[#8FA9C4]/30 sm:-left-16">
+                  <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-[#47a8e4]" />Panggilan tak dikenal
+                </li>
+                <li className="absolute -right-8 top-[38%] rounded-full bg-white px-3 py-1.5 shadow-md shadow-[#8FA9C4]/30 sm:-right-14">
+                  <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-[#F59E0B]" />Peringatan palsu
+                </li>
+                <li className="absolute -left-6 bottom-[14%] rounded-full bg-white px-3 py-1.5 shadow-md shadow-[#8FA9C4]/30 sm:-left-12">
+                  <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-[#EF4444]" />Data dicuri
+                </li>
+              </ul>
+            </div>
+
+            <div className="order-3 flex flex-col gap-3 sm:flex-row sm:justify-center lg:col-start-1 lg:row-start-2 lg:justify-start">
+              <a
+                href="#modus"
+                className="rounded-2xl bg-[#47a8e4] px-6 py-2.5 text-center text-sm font-semibold text-white shadow-lg transition duration-200 hover:-translate-y-0.5 hover:bg-[#85B6FF] hover:shadow-xl sm:text-base"
+              >
+                Mulai dari modus terkini
+              </a>
+              <Link
+                to="/analysis"
+                className="rounded-2xl border border-[#47a8e4]/60 bg-white px-6 py-2.5 text-center text-sm font-semibold text-[#2E86B7] shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[#47a8e4] hover:bg-[#EAF6FD] sm:text-base"
+              >
+                Periksa pesan mencurigakan
+              </Link>
+            </div>
           </div>
         </section>
 

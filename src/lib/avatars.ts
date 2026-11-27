@@ -1,8 +1,8 @@
-import heroRobot from "../assets/Home/heroicon.webp";
-import winkRobot from "../assets/Home/body-2.webp";
-import phoneRobot from "../assets/Emergency/robot1.webp";
-import detectiveRobot from "../assets/Emergency/robot2.webp";
-import waveRobot from "../assets/Emergency/robotInfo.webp";
+import heroRobot from "../assets/Robots/robot-jempol.webp";
+import winkRobot from "../assets/Robots/robot-kedip.webp";
+import phoneRobot from "../assets/Robots/robot-hp.webp";
+import detectiveRobot from "../assets/Robots/robot-detektif.webp";
+import waveRobot from "../assets/Robots/robot-sapa.webp";
 import shieldRobot from "../assets/Robots/robot-perisai.webp";
 import lockRobot from "../assets/Robots/robot-gembok.webp";
 import bookRobot from "../assets/Robots/robot-baca.webp";
@@ -16,35 +16,35 @@ export const AVATARS = [
     label: "Robot jempol",
     src: heroRobot,
     bg: "bg-[#DCE9FF]",
-    img: "left-[52%] top-[-4%] w-[150%]",
+    img: "left-[46%] top-[6%] w-[168%]",
   },
   {
     id: "kedip",
     label: "Robot kedip",
     src: winkRobot,
     bg: "bg-[#D9F3EC]",
-    img: "left-[50%] top-[-4%] w-[150%]",
+    img: "left-[50%] top-[5%] w-[158%]",
   },
   {
     id: "chat",
     label: "Robot pegang HP",
     src: phoneRobot,
     bg: "bg-[#FFE7D1]",
-    img: "left-[82%] top-[-22%] w-[190%]",
+    img: "left-[64%] top-[4%] w-[159%]",
   },
   {
     id: "detektif",
     label: "Robot detektif",
     src: detectiveRobot,
     bg: "bg-[#EAE2FF]",
-    img: "left-[41%] top-[-22%] w-[190%]",
+    img: "left-[41%] top-[-13%] w-[198%]",
   },
   {
     id: "sapa",
     label: "Robot menyapa",
     src: waveRobot,
     bg: "bg-[#FFF1C2]",
-    img: "left-[-16%] top-[-70%] w-[300%]",
+    img: "left-[43%] top-[5%] w-[168%]",
   },
   {
     id: "perisai",
