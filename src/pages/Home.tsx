@@ -199,15 +199,7 @@ export default function Home() {
         id="why-section"
         className="reveal w-full max-w-6xl"
       >
-        <div className="relative overflow-hidden rounded-[32px] bg-white/50 px-5 py-10 shadow-md sm:rounded-[44px] sm:px-8 sm:py-12 lg:px-12">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#ADCEFF]/30 blur-2xl"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -bottom-24 -left-16 h-56 w-56 rounded-full bg-[#47a8e4]/10 blur-2xl"
-          />
+        <div className="relative rounded-[32px] bg-white/50 bg-[radial-gradient(circle_at_100%_0%,rgba(173,206,255,0.4),transparent_42%),radial-gradient(circle_at_0%_100%,rgba(71,168,228,0.12),transparent_42%)] px-5 py-10 shadow-md sm:rounded-[44px] sm:px-8 sm:py-12 lg:px-12">
 
           <div className="relative flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-center lg:gap-12 lg:text-left">
             <div className="relative flex shrink-0 flex-col items-center">
