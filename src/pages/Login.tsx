@@ -10,7 +10,7 @@ import {
   UserIcon,
 } from "../components/AuthIcons";
 import google from "../assets/Icon/google.svg";
-import robot from "../assets/Home/heroicon.webp";
+import robot from "../assets/Robots/robot-gembok.webp";
 
 export default function Login() {
   const navigate = useNavigate();

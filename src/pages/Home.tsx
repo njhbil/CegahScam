@@ -4,7 +4,7 @@ import { useState } from "react";
 import body1 from "../assets/Home/body-1.webp";
 import body2 from "../assets/Home/body-2.webp";
 import heroIcon from "../assets/Home/heroicon.webp";
-import whyRobot from "../assets/Education/edu-robot.webp";
+import whyRobot from "../assets/Robots/robot-perisai.webp";
 import cursor from "../assets/Icon/Cursor.svg";
 import files from "../assets/Icon/Files.svg";
 import handHeart from "../assets/Icon/HandHeart.svg";

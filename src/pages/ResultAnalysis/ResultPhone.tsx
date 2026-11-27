@@ -4,7 +4,7 @@ import RiskGauge from "../../components/RiskGauge";
 import Robot from "../../components/Robot";
 import OfficialContactsCard from "../../components/OfficialContactsCard";
 import { downloadAnalysisReport, resolveContacts } from "../../lib/analysisReport";
-import robot from "../../assets/Emergency/robot1.webp";
+import robot from "../../assets/Robots/robot-mikir.webp";
 
 type RiskLevel = "low" | "medium" | "high";
 

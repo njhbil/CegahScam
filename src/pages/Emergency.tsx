@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { showLoginAlert } from "../utils/authAlert";
 
-import robot1 from "../assets/Emergency/robot1.webp";
-import robot2 from "../assets/Emergency/robot2.webp";
+import robot1 from "../assets/Robots/robot-kaget.webp";
+import robot2 from "../assets/Robots/robot-toa.webp";
 import Robot from "../components/Robot";
 import EmergencyHook from "../components/EmergencyHook";
 

@@ -8,7 +8,7 @@ import foto1 from "../assets/Education/carousel/carousel1.webp";
 import foto2 from "../assets/Education/carousel/carousel2.webp";
 import foto3 from "../assets/Education/carousel/carousel3.webp";
 import foto4 from "../assets/Education/carousel/carousel4.webp";
-import eduRobot from "../assets/Education/edu-robot.webp";
+import eduRobot from "../assets/Robots/robot-baca.webp";
 import robotModus from "../assets/Emergency/robot2.webp";
 import robotChat from "../assets/Emergency/robot1.webp";
 import Robot from "../components/Robot";

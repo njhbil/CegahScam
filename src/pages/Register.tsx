@@ -10,7 +10,7 @@ import {
   UserIcon,
 } from "../components/AuthIcons";
 import google from "../assets/Icon/google.svg";
-import robot from "../assets/Home/body-1.webp";
+import robot from "../assets/Robots/robot-senang.webp";
 
 export default function Register() {
   const [username, setUsername] = useState("");

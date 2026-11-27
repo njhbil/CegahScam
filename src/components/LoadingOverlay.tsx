@@ -1,4 +1,4 @@
-import robot from "../assets/Emergency/robot1.webp";
+import robot from "../assets/Robots/robot-laptop.webp";
 
 type LoadingOverlayProps = {
   message?: string;
